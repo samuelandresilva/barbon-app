@@ -1,4 +1,15 @@
 import { Route, Routes } from 'react-router-dom'
+import { AppLayout } from '../components/layout'
+import type { Barbearia } from '../types'
+
+const barbeariaPreview: Barbearia = {
+  nome: 'Barbearia Carvalho',
+  telefoneWhatsapp: '(11) 99999-9999',
+  endereco: 'Rua Exemplo, 123',
+  instagram: '@barbeariacarvalho',
+  logoUrl: '',
+  descricao: 'Cortes classicos, barba alinhada e atendimento tradicional.',
+}
 
 export function AppRoutes() {
   return (
@@ -6,20 +17,11 @@ export function AppRoutes() {
       <Route
         path="/"
         element={
-          <main className="min-h-dvh bg-stone-950 px-5 py-8 text-stone-100">
-            <section className="mx-auto flex min-h-[calc(100dvh-4rem)] max-w-3xl flex-col justify-center">
-              <p className="mb-3 text-sm font-semibold uppercase text-amber-400">
-                Oakbeard.app
-              </p>
-              <h1 className="text-4xl font-semibold tracking-normal text-stone-50 sm:text-5xl">
-                Bootstrap do projeto
-              </h1>
-              <p className="mt-4 max-w-xl text-base leading-7 text-stone-300">
-                React, TypeScript, Vite, Tailwind CSS e React Router foram
-                configurados para iniciar a implementacao da aplicacao.
-              </p>
-            </section>
-          </main>
+          <AppLayout barbearia={barbeariaPreview} currentStep="servico">
+            <div className="flex min-h-64 items-center justify-center text-center text-sm text-stone-400">
+              Oakbeard.app
+            </div>
+          </AppLayout>
         }
       />
     </Routes>

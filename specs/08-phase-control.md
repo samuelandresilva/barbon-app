@@ -163,7 +163,54 @@
 - Nao foram implementadas paginas, layout base, servicos externos, validacoes ou regras de disponibilidade da proxima fase.
 - O build e o lint foram executados com sucesso.
 
-- [ ] Fase 04 - Layout Base
+- [x] Fase 04 - Layout Base
+
+## Log - Fase 04 - Layout Base
+
+### Data da conclusao
+
+2026-06-03
+
+### Arquivos criados
+
+- src/components/layout/AppLayout.tsx
+- src/components/layout/BarbeariaCard.tsx
+- src/components/layout/HeaderOakbeard.tsx
+- src/components/layout/StepIndicator.tsx
+- src/components/layout/index.ts
+
+### Arquivos alterados
+
+- src/routes/AppRoutes.tsx
+- specs/08-phase-control.md
+
+### Comandos executados
+
+- Get-Content specs/08-phase-control.md
+- Get-Content specs/01-product-requirements.md
+- Get-Content specs/02-ui-spec.md
+- Get-Content specs/03-data-model.md
+- Get-Content specs/04-technical-architecture.md
+- Get-Content specs/05-acceptance-criteria.md
+- Get-Content specs/06-implementation-rules.md
+- Get-Content specs/07-implementation-plan.md
+- rg --files src
+- Get-Content src\routes\AppRoutes.tsx
+- Get-Content src\index.css
+- git status --short
+- npm run build
+- npm run lint
+- Remove-Item -LiteralPath .\dist -Recurse -Force
+
+### Observacoes importantes
+
+- A ultima fase concluida antes desta implementacao era a Fase 03 - BookingContext.
+- Foram criados os componentes visuais compartilhados HeaderOakbeard, BarbeariaCard, StepIndicator e AppLayout.
+- O layout base foi aplicado na rota inicial para validar a estrutura comum.
+- Os dados da barbearia usados na rota inicial sao estaticos e temporarios, apenas para renderizacao do layout; a fonte mockada sera implementada somente na Fase 05.
+- Nao foram criadas paginas do fluxo, servicos externos, validacoes ou regras de negocio.
+- O build e o lint foram executados com sucesso.
+
 - [ ] Fase 05 - Integração Google Sheets Mock
 - [ ] Fase 06 - Home
 - [ ] Fase 07 - Seleção de Serviço
