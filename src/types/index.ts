@@ -1,0 +1,8 @@
+export type { AgendaBarbeiro } from './AgendaBarbeiro'
+export type { Barbearia } from './Barbearia'
+export type { Barbeiro } from './Barbeiro'
+export type { BarbeiroServico } from './BarbeiroServico'
+export type { EventoOcupado } from './EventoOcupado'
+export type { HorarioDisponivel } from './HorarioDisponivel'
+export type { Servico } from './Servico'
+export type { SolicitacaoAgendamento } from './SolicitacaoAgendamento'
