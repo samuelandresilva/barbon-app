@@ -211,7 +211,46 @@
 - Nao foram criadas paginas do fluxo, servicos externos, validacoes ou regras de negocio.
 - O build e o lint foram executados com sucesso.
 
-- [ ] Fase 05 - Integração Google Sheets Mock
+- [x] Fase 05 - Integração Google Sheets Mock
+
+## Log - Fase 05 - Integração Google Sheets Mock
+
+### Data da conclusao
+
+2026-06-03
+
+### Arquivos criados
+
+- src/services/googleSheetsService.ts
+
+### Arquivos alterados
+
+- specs/08-phase-control.md
+
+### Comandos executados
+
+- Get-Content specs/08-phase-control.md
+- Get-Content specs/01-product-requirements.md
+- Get-Content specs/02-ui-spec.md
+- Get-Content specs/03-data-model.md
+- Get-Content specs/04-technical-architecture.md
+- Get-Content specs/05-acceptance-criteria.md
+- Get-Content specs/06-implementation-rules.md
+- Get-Content specs/07-implementation-plan.md
+- rg --files src\services src\types
+- npm run build
+- npm run lint
+- Remove-Item -LiteralPath .\dist -Recurse -Force
+
+### Observacoes importantes
+
+- A ultima fase concluida antes desta implementacao era a Fase 04 - Layout Base.
+- Foi criado o servico googleSheetsService.ts usando dados mockados e tipados.
+- O servico expoe leitura mockada de barbearia, servicos ativos, barbeiros ativos, relacao barbeiro-servico e agendas ativas.
+- Tambem foi criada a funcao agregada getGoogleSheetsData() para carregar todos os dados cadastrais de uma vez.
+- Nao houve integracao com telas, paginas, contexto ou fluxo de navegacao; isso permanece para as fases seguintes.
+- O build e o lint foram executados com sucesso.
+
 - [ ] Fase 06 - Home
 - [ ] Fase 07 - Seleção de Serviço
 - [ ] Fase 08 - Seleção de Barbeiro
