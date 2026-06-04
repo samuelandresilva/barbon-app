@@ -295,7 +295,46 @@
 - Nao foram implementados ServicePage, selecao de servico ou regras de fluxo da fase seguinte.
 - O build e o lint foram executados com sucesso.
 
-- [ ] Fase 07 - Seleção de Serviço
+- [x] Fase 07 - Seleção de Serviço
+
+## Log - Fase 07 - Seleção de Serviço
+
+### Data da conclusao
+
+2026-06-03
+
+### Arquivos criados
+
+- src/components/service/ServiceCard.tsx
+- src/components/service/index.ts
+- src/pages/ServicePage/ServicePage.tsx
+- src/pages/ServicePage/index.ts
+
+### Arquivos alterados
+
+- src/routes/AppRoutes.tsx
+- specs/08-phase-control.md
+
+### Comandos executados
+
+- Get-Content specs/08-phase-control.md
+- Get-Content src\contexts\bookingContext.ts
+- Get-Content src\contexts\useBooking.ts
+- git status --short
+- npm run build
+- npm run lint
+- Remove-Item -LiteralPath .\dist -Recurse -Force
+
+### Observacoes importantes
+
+- A ultima fase concluida antes desta implementacao era a Fase 06 - Home.
+- Foi criada a ServicePage carregando barbearia e servicos ativos pelo googleSheetsService.
+- Foi criado o ServiceCard exibindo nome, descricao, preco e duracao.
+- A selecao salva exatamente um servico no BookingContext.
+- O botao Continuar fica desabilitado ate existir servico selecionado e navega para /barbeiros.
+- Nao foram implementados BarberPage, BarberCard ou filtro de barbeiros da proxima fase.
+- O build e o lint foram executados com sucesso.
+
 - [ ] Fase 08 - Seleção de Barbeiro
 - [ ] Fase 09 - Seleção de Data
 - [ ] Fase 10 - Google Calendar Mock
