@@ -707,5 +707,54 @@
 - Nao foi implementada integracao real com Google Calendar; a Fase 18 permanece pendente.
 - O build, o lint e a validacao HTTP das cinco abas foram executados com sucesso.
 
-- [ ] Fase 18 - Integração Real Google Calendar
+- [x] Fase 18 - Integração Real Google Calendar
+
+## Log - Fase 18 - Integração Real Google Calendar
+
+### Data da conclusao
+
+2026-06-04
+
+### Arquivos criados
+
+- Nenhum arquivo versionado novo.
+
+### Arquivos alterados
+
+- .env
+- .env.example
+- src/services/googleCalendarService.ts
+- src/vite-env.d.ts
+- specs/08-phase-control.md
+
+### Comandos executados
+
+- Get-Content src\services\googleCalendarService.ts
+- Get-Content .env.example
+- Get-Content .env
+- Get-Content src\vite-env.d.ts
+- Get-Content specs/08-phase-control.md
+- git status --short
+- npm run build
+- npm run lint
+- Invoke-WebRequest para ler google_calendar_id da aba barbeiro_agendas
+- Invoke-WebRequest para validar Google Calendar API sem Referer
+- Invoke-WebRequest para validar Google Calendar API com Referer http://localhost:5173/
+- Remove-Item -LiteralPath .\dist -Recurse -Force
+
+### Observacoes importantes
+
+- A ultima fase concluida antes desta implementacao era a Fase 17 - Integracao Real Google Sheets.
+- O mock de googleCalendarService.ts foi substituido por leitura real da Google Calendar API.
+- A API key foi configurada em VITE_GOOGLE_CALENDAR_API_KEY no .env local ignorado pelo Git.
+- O .env.example foi atualizado com placeholder da variavel VITE_GOOGLE_CALENDAR_API_KEY.
+- A consulta usa timeMin e timeMax para o dia selecionado no timezone America/Sao_Paulo.
+- Eventos com status cancelled sao ignorados.
+- Eventos de dia inteiro sao tratados como bloqueio do dia.
+- Nao ha fallback para mock em caso de falha; o app exibe erro amigavel.
+- A validacao sem Referer retornou 403 por restricao da chave; com Referer http://localhost:5173/ a API respondeu HTTP 200.
+- O dominio final da aplicacao deve estar permitido nas restricoes HTTP referrer da chave no Google Cloud.
+- Nao foi iniciada a Fase 19 - Refinamento Visual.
+- O build e o lint foram executados com sucesso.
+
 - [ ] Fase 19 - Refinamento Visual
