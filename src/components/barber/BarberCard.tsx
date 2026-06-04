@@ -1,4 +1,6 @@
 import type { Barbeiro } from '../../types'
+import { getInitials } from '../../utils/getInitials'
+import { hasValidImageUrl } from '../../utils/hasValidImageUrl'
 
 interface BarberCardProps {
   barbeiro: Barbeiro
@@ -23,7 +25,7 @@ export function BarberCard({
       onClick={() => onSelect(barbeiro)}
       aria-pressed={isSelected}
     >
-      {barbeiro.fotoUrl ? (
+      {hasValidImageUrl(barbeiro.fotoUrl) ? (
         <img
           src={barbeiro.fotoUrl}
           alt={`Foto de ${barbeiro.nome}`}
@@ -39,11 +41,7 @@ export function BarberCard({
           ].join(' ')}
           aria-hidden="true"
         >
-          {barbeiro.nome
-            .split(' ')
-            .map((namePart) => namePart[0])
-            .join('')
-            .slice(0, 2)}
+          {getInitials(barbeiro.nome)}
         </span>
       )}
 
