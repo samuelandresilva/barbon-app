@@ -20,13 +20,11 @@ body {
   min-width: 320px;
   background:
     linear-gradient(135deg, rgba(28, 25, 23, 0.98), rgba(12, 10, 9, 1)),
-    repeating-linear-gradient(
-      90deg,
+    repeating-linear-gradient(90deg,
       rgba(146, 64, 14, 0.05) 0,
       rgba(146, 64, 14, 0.05) 1px,
       transparent 1px,
-      transparent 18px
-    );
+      transparent 18px);
 }
 
 button,
@@ -39,4 +37,13 @@ select {
 button,
 input {
   outline-offset: 3px;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

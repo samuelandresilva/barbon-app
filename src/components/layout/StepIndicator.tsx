@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react'
+
 export type BookingStep =
   | 'servico'
   | 'barbeiro'
@@ -25,17 +27,38 @@ const bookingSteps: StepItem[] = [
 ]
 
 export function StepIndicator({ currentStep }: StepIndicatorProps) {
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null)
+  const stepRefs = useRef<Record<string, HTMLLIElement | null>>({})
+
   const currentIndex = Math.max(
     bookingSteps.findIndex((step) => step.id === currentStep),
     0,
   )
+
+  useEffect(() => {
+    const currentStepId = bookingSteps[currentIndex]?.id
+    const currentElement = currentStepId ? stepRefs.current[currentStepId] : null
+
+    if (!currentElement) {
+      return
+    }
+
+    currentElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'center',
+    })
+  }, [currentIndex])
 
   return (
     <nav
       aria-label="Progresso do agendamento"
       className="rounded-2xl border border-stone-800/80 bg-stone-950/70 px-4 py-4 shadow-lg shadow-black/20"
     >
-      <div className="overflow-x-auto">
+      <div
+        ref={scrollContainerRef}
+        className="overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
         <ol className="flex min-w-max items-center pr-2">
           {bookingSteps.map((step, index) => {
             const isCurrent = index === currentIndex
@@ -43,7 +66,13 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
             const isUpcoming = index > currentIndex
 
             return (
-              <li key={step.id} className="flex items-center">
+              <li
+                key={step.id}
+                ref={(element) => {
+                  stepRefs.current[step.id] = element
+                }}
+                className="flex items-center"
+              >
                 <div className="flex flex-col items-center gap-2">
                   <span
                     className={[
