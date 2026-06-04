@@ -335,7 +335,49 @@
 - Nao foram implementados BarberPage, BarberCard ou filtro de barbeiros da proxima fase.
 - O build e o lint foram executados com sucesso.
 
-- [ ] Fase 08 - Seleção de Barbeiro
+- [x] Fase 08 - Seleção de Barbeiro
+
+## Log - Fase 08 - Seleção de Barbeiro
+
+### Data da conclusao
+
+2026-06-03
+
+### Arquivos criados
+
+- src/components/barber/BarberCard.tsx
+- src/components/barber/index.ts
+- src/pages/BarberPage/BarberPage.tsx
+- src/pages/BarberPage/index.ts
+
+### Arquivos alterados
+
+- src/pages/ServicePage/ServicePage.tsx
+- src/routes/AppRoutes.tsx
+- specs/08-phase-control.md
+
+### Comandos executados
+
+- Get-Content specs/08-phase-control.md
+- Get-Content src\pages\ServicePage\ServicePage.tsx
+- Get-Content src\services\googleSheetsService.ts
+- git status --short
+- npm run build
+- npm run lint
+- Remove-Item -LiteralPath .\dist -Recurse -Force
+
+### Observacoes importantes
+
+- A ultima fase concluida antes desta implementacao era a Fase 07 - Seleção de Serviço.
+- Foi criada a BarberPage carregando barbearia, barbeiros ativos e relacao barbeiro-servico pelo googleSheetsService.
+- Foi criado o BarberCard exibindo foto quando disponivel, nome e descricao.
+- A tela exibe somente barbeiros compativeis com o servico selecionado.
+- A selecao salva exatamente um barbeiro no BookingContext.
+- A selecao de barbeiro e limpa quando o servico muda, evitando combinacoes incompativeis.
+- O botao Continuar fica desabilitado ate existir barbeiro compativel selecionado e navega para /data.
+- Nao foram implementados DatePage ou calendario da proxima fase.
+- O build e o lint foram executados com sucesso.
+
 - [ ] Fase 09 - Seleção de Data
 - [ ] Fase 10 - Google Calendar Mock
 - [ ] Fase 11 - Regra de Disponibilidade

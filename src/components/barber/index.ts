@@ -1,0 +1,1 @@
+export { BarberCard } from './BarberCard'

@@ -11,7 +11,11 @@ import type { Barbearia, Servico } from '../../types'
 
 export function ServicePage() {
   const navigate = useNavigate()
-  const { servicoSelecionado, setServicoSelecionado } = useBooking()
+  const {
+    servicoSelecionado,
+    setBarbeiroSelecionado,
+    setServicoSelecionado,
+  } = useBooking()
   const [barbearia, setBarbearia] = useState<Barbearia | null>(null)
   const [servicos, setServicos] = useState<Servico[]>([])
   const [isLoading, setIsLoading] = useState(true)
@@ -50,6 +54,11 @@ export function ServicePage() {
       isMounted = false
     }
   }, [])
+
+  function handleServiceSelect(servico: Servico) {
+    setServicoSelecionado(servico)
+    setBarbeiroSelecionado(null)
+  }
 
   if (isLoading) {
     return (
@@ -95,7 +104,7 @@ export function ServicePage() {
               key={servico.id}
               servico={servico}
               isSelected={servicoSelecionado?.id === servico.id}
-              onSelect={setServicoSelecionado}
+              onSelect={handleServiceSelect}
             />
           ))}
         </div>
