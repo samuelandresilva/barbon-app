@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AppLayout, HeaderOakbeard } from '../../components/layout'
 import { ServiceCard } from '../../components/service'
@@ -18,8 +18,23 @@ export function ServicePage() {
   } = useBooking()
   const [barbearia, setBarbearia] = useState<Barbearia | null>(null)
   const [servicos, setServicos] = useState<Servico[]>([])
+  const [serviceFilter, setServiceFilter] = useState('')
   const [isLoading, setIsLoading] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
+
+  const filteredServices = useMemo(() => {
+    const normalizedFilter = serviceFilter.trim().toLocaleLowerCase('pt-BR')
+
+    if (!normalizedFilter) {
+      return servicos
+    }
+
+    return servicos.filter((servico) =>
+      [servico.nome, servico.descricao].some((value) =>
+        value.toLocaleLowerCase('pt-BR').includes(normalizedFilter),
+      ),
+    )
+  }, [serviceFilter, servicos])
 
   useEffect(() => {
     let isMounted = true
@@ -98,8 +113,21 @@ export function ServicePage() {
           </p>
         </div>
 
+        <label className="grid gap-2">
+          <span className="text-sm font-medium text-stone-200">
+            Filtrar serviços
+          </span>
+          <input
+            type="search"
+            className="min-h-12 rounded-md border border-stone-700 bg-stone-950/70 px-4 text-sm text-stone-50 outline-none shadow-inner shadow-black/20 transition focus:border-amber-400"
+            value={serviceFilter}
+            onChange={(event) => setServiceFilter(event.target.value)}
+            placeholder="Digite o nome do serviço"
+          />
+        </label>
+
         <div className="grid gap-3">
-          {servicos.map((servico) => (
+          {filteredServices.map((servico) => (
             <ServiceCard
               key={servico.id}
               servico={servico}
@@ -108,6 +136,12 @@ export function ServicePage() {
             />
           ))}
         </div>
+
+        {filteredServices.length === 0 ? (
+          <p className="rounded-md border border-stone-800 bg-stone-900/90 p-4 text-sm text-stone-300">
+            Nenhum serviço encontrado para o filtro informado.
+          </p>
+        ) : null}
 
         <div className="flex justify-end">
           <button
