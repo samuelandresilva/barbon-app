@@ -3,6 +3,11 @@ import { useNavigate } from 'react-router-dom'
 import { AppLayout, HeaderOakbeard } from '../../components/layout'
 import { useBooking } from '../../contexts'
 import { getBarbearia } from '../../services/googleSheetsService'
+import {
+  buildWhatsAppMessage,
+  buildWhatsAppUrl,
+  openWhatsAppUrl,
+} from '../../services/whatsappService'
 import type { Barbearia } from '../../types'
 
 const currencyFormatter = new Intl.NumberFormat('pt-BR', {
@@ -120,6 +125,26 @@ export function ReviewPage() {
     )
   }
 
+  const confirmedBarbearia = barbearia
+  const bookingDetails = {
+    barbeiro: barbeiroSelecionado,
+    data,
+    horario,
+    nomeCliente,
+    servico: servicoSelecionado,
+    telefoneCliente,
+  }
+
+  function handleBookingRequest() {
+    const message = buildWhatsAppMessage(bookingDetails)
+    const whatsappUrl = buildWhatsAppUrl({
+      message,
+      telefoneWhatsapp: confirmedBarbearia.telefoneWhatsapp,
+    })
+
+    openWhatsAppUrl(whatsappUrl)
+  }
+
   return (
     <AppLayout barbearia={barbearia} currentStep="revisao">
       <div className="flex flex-col gap-5">
@@ -201,8 +226,8 @@ export function ReviewPage() {
           </button>
           <button
             type="button"
-            className="min-h-12 rounded bg-stone-700 px-5 text-sm font-semibold text-stone-400"
-            disabled
+            className="min-h-12 rounded bg-amber-400 px-5 text-sm font-semibold text-stone-950 transition hover:bg-amber-300"
+            onClick={handleBookingRequest}
           >
             Solicitar Agendamento
           </button>

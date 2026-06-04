@@ -612,7 +612,44 @@
 - A geracao da URL e abertura do WhatsApp permanecem para a Fase 15.
 - O build e o lint foram executados com sucesso.
 
-- [ ] Fase 15 - WhatsApp
+- [x] Fase 15 - WhatsApp
+
+## Log - Fase 15 - WhatsApp
+
+### Data da conclusao
+
+2026-06-04
+
+### Arquivos criados
+
+- src/services/whatsappService.ts
+
+### Arquivos alterados
+
+- src/pages/ReviewPage/ReviewPage.tsx
+- specs/08-phase-control.md
+
+### Comandos executados
+
+- Get-Content specs/08-phase-control.md
+- git status --short
+- Get-Content src\pages\ReviewPage\ReviewPage.tsx
+- Get-Content src\types\SolicitacaoAgendamento.ts
+- npm run build
+- npm run lint
+- npm run build
+- npm run lint
+- Remove-Item -LiteralPath .\dist -Recurse -Force
+
+### Observacoes importantes
+
+- A ultima fase concluida antes desta implementacao era a Fase 14 - Revisao.
+- Foi criado o whatsappService.ts para montar mensagem, gerar URL wa.me e abrir o link do WhatsApp.
+- A ReviewPage passou a acionar a geracao da mensagem e a abertura do WhatsApp pelo botao Solicitar Agendamento.
+- A primeira execucao de build apontou uma possibilidade de barbearia nula no handler; a referencia foi refinada e o build seguinte passou.
+- O build e o lint finais foram executados com sucesso.
+- A Fase 16 - Fluxo Completo nao foi iniciada.
+
 - [ ] Fase 16 - Fluxo Completo
 - [ ] Fase 17 - Integração Real Google Sheets
 - [ ] Fase 18 - Integração Real Google Calendar
