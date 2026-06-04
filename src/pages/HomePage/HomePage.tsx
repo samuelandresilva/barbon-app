@@ -80,12 +80,12 @@ export function HomePage() {
 
   return (
     <AppLayout barbearia={barbearia}>
-      <div className="flex min-h-72 flex-col justify-center gap-5">
+      <div className="flex min-h-72 flex-col justify-center gap-6">
         <div>
-          <p className="text-sm font-semibold uppercase text-amber-400">
+          <p className="text-sm font-bold uppercase text-amber-400">
             Agendamento
           </p>
-          <h1 className="mt-2 text-3xl font-semibold text-stone-50">
+          <h1 className="mt-2 max-w-3xl text-3xl font-bold text-stone-50 sm:text-4xl">
             Escolha seu horario com praticidade.
           </h1>
           <p className="mt-3 max-w-2xl text-base leading-7 text-stone-300">
@@ -97,7 +97,7 @@ export function HomePage() {
         <div>
           <button
             type="button"
-            className="min-h-12 rounded bg-amber-400 px-5 text-sm font-semibold text-stone-950 transition hover:bg-amber-300"
+            className="min-h-12 rounded-md bg-amber-400 px-5 text-sm font-bold text-stone-950 shadow-lg shadow-amber-950/20 transition hover:bg-amber-300"
             onClick={() => navigate('/servicos')}
           >
             Agendar Horario

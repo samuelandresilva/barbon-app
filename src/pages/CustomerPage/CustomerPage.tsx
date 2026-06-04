@@ -155,7 +155,7 @@ export function CustomerPage() {
             <span className="text-sm font-medium text-stone-200">Nome</span>
             <input
               type="text"
-              className="min-h-12 rounded border border-stone-700 bg-stone-900 px-4 text-sm text-stone-50 outline-none transition focus:border-amber-400"
+              className="min-h-12 rounded-md border border-stone-700 bg-stone-950/70 px-4 text-sm text-stone-50 outline-none shadow-inner shadow-black/20 transition focus:border-amber-400"
               value={nomeCliente}
               onChange={handleNameChange}
               placeholder="Seu nome"
@@ -174,7 +174,7 @@ export function CustomerPage() {
             <input
               type="tel"
               inputMode="numeric"
-              className="min-h-12 rounded border border-stone-700 bg-stone-900 px-4 text-sm text-stone-50 outline-none transition focus:border-amber-400"
+              className="min-h-12 rounded-md border border-stone-700 bg-stone-950/70 px-4 text-sm text-stone-50 outline-none shadow-inner shadow-black/20 transition focus:border-amber-400"
               value={telefoneCliente}
               onChange={handlePhoneChange}
               placeholder="(11) 99999-9999"
@@ -190,14 +190,14 @@ export function CustomerPage() {
         <div className="flex justify-between gap-3">
           <button
             type="button"
-            className="min-h-12 rounded border border-stone-700 px-5 text-sm font-semibold text-stone-200"
+            className="min-h-12 rounded-md border border-stone-700 bg-stone-950/60 px-5 text-sm font-semibold text-stone-200 transition hover:border-amber-700"
             onClick={() => navigate('/horarios')}
           >
             Voltar
           </button>
           <button
             type="button"
-            className="min-h-12 rounded bg-amber-400 px-5 text-sm font-semibold text-stone-950 transition enabled:hover:bg-amber-300 disabled:cursor-not-allowed disabled:bg-stone-700 disabled:text-stone-400"
+            className="min-h-12 rounded-md bg-amber-400 px-5 text-sm font-bold text-stone-950 shadow-lg shadow-amber-950/20 transition enabled:hover:bg-amber-300 disabled:cursor-not-allowed disabled:bg-stone-700 disabled:text-stone-400 disabled:shadow-none"
             disabled={!isFormValid}
             onClick={() => navigate('/revisao')}
           >

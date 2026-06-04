@@ -29,10 +29,10 @@ export function TimeSlotList({
             key={`${slot.data}-${slot.horario}`}
             type="button"
             className={[
-              'min-h-12 rounded border px-4 text-sm font-semibold transition',
+              'min-h-12 rounded-md border px-4 text-sm font-semibold shadow-sm transition',
               isSelected
-                ? 'border-amber-400 bg-amber-400 text-stone-950'
-                : 'border-stone-700 bg-stone-900 text-stone-100 hover:border-amber-300',
+                ? 'border-amber-400 bg-amber-400 text-stone-950 shadow-amber-950/20'
+                : 'border-stone-700 bg-stone-900/90 text-stone-100 shadow-black/20 hover:border-amber-300 hover:bg-stone-900',
             ].join(' ')}
             aria-pressed={isSelected}
             onClick={() => onSelectTime(slot.horario)}

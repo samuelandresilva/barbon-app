@@ -20,10 +20,10 @@ export function ServiceCard({
     <button
       type="button"
       className={[
-        'w-full rounded-md border p-4 text-left transition',
+        'w-full rounded-md border p-4 text-left shadow-sm transition',
         isSelected
-          ? 'border-amber-400 bg-amber-400 text-stone-950'
-          : 'border-stone-800 bg-stone-900 text-stone-100 hover:border-amber-700',
+          ? 'border-amber-400 bg-amber-400 text-stone-950 shadow-amber-950/20'
+          : 'border-stone-800 bg-stone-900/90 text-stone-100 shadow-black/20 hover:border-amber-700 hover:bg-stone-900',
       ].join(' ')}
       onClick={() => onSelect(servico)}
       aria-pressed={isSelected}
@@ -37,9 +37,13 @@ export function ServiceCard({
       >
         {servico.descricao}
       </span>
-      <span className="mt-4 flex flex-wrap gap-3 text-sm font-medium">
-        <span>{currencyFormatter.format(servico.preco)}</span>
-        <span>{servico.duracaoMinutos} minutos</span>
+      <span className="mt-4 flex flex-wrap gap-2 text-sm font-semibold">
+        <span className="rounded border border-current/20 px-2 py-1">
+          {currencyFormatter.format(servico.preco)}
+        </span>
+        <span className="rounded border border-current/20 px-2 py-1">
+          {servico.duracaoMinutos} minutos
+        </span>
       </span>
     </button>
   )

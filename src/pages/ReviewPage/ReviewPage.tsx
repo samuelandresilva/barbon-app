@@ -158,8 +158,8 @@ export function ReviewPage() {
         </div>
 
         <dl className="grid gap-3">
-          <div className="rounded-md border border-stone-800 bg-stone-900 p-4">
-            <dt className="text-xs font-semibold uppercase tracking-wide text-stone-500">
+          <div className="rounded-md border border-stone-800 bg-stone-900/90 p-4 shadow-sm shadow-black/20">
+            <dt className="text-xs font-semibold uppercase text-stone-500">
               Servico
             </dt>
             <dd className="mt-2 text-base font-semibold text-stone-50">
@@ -171,8 +171,8 @@ export function ReviewPage() {
             </dd>
           </div>
 
-          <div className="rounded-md border border-stone-800 bg-stone-900 p-4">
-            <dt className="text-xs font-semibold uppercase tracking-wide text-stone-500">
+          <div className="rounded-md border border-stone-800 bg-stone-900/90 p-4 shadow-sm shadow-black/20">
+            <dt className="text-xs font-semibold uppercase text-stone-500">
               Barbeiro
             </dt>
             <dd className="mt-2 text-base font-semibold text-stone-50">
@@ -181,8 +181,8 @@ export function ReviewPage() {
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2">
-            <div className="rounded-md border border-stone-800 bg-stone-900 p-4">
-              <dt className="text-xs font-semibold uppercase tracking-wide text-stone-500">
+            <div className="rounded-md border border-stone-800 bg-stone-900/90 p-4 shadow-sm shadow-black/20">
+              <dt className="text-xs font-semibold uppercase text-stone-500">
                 Data
               </dt>
               <dd className="mt-2 text-base font-semibold text-stone-50">
@@ -190,8 +190,8 @@ export function ReviewPage() {
               </dd>
             </div>
 
-            <div className="rounded-md border border-stone-800 bg-stone-900 p-4">
-              <dt className="text-xs font-semibold uppercase tracking-wide text-stone-500">
+            <div className="rounded-md border border-stone-800 bg-stone-900/90 p-4 shadow-sm shadow-black/20">
+              <dt className="text-xs font-semibold uppercase text-stone-500">
                 Horario
               </dt>
               <dd className="mt-2 text-base font-semibold text-stone-50">
@@ -200,8 +200,8 @@ export function ReviewPage() {
             </div>
           </div>
 
-          <div className="rounded-md border border-stone-800 bg-stone-900 p-4">
-            <dt className="text-xs font-semibold uppercase tracking-wide text-stone-500">
+          <div className="rounded-md border border-stone-800 bg-stone-900/90 p-4 shadow-sm shadow-black/20">
+            <dt className="text-xs font-semibold uppercase text-stone-500">
               Cliente
             </dt>
             <dd className="mt-2 text-base font-semibold text-stone-50">
@@ -219,14 +219,14 @@ export function ReviewPage() {
         <div className="flex justify-between gap-3">
           <button
             type="button"
-            className="min-h-12 rounded border border-stone-700 px-5 text-sm font-semibold text-stone-200"
+            className="min-h-12 rounded-md border border-stone-700 bg-stone-950/60 px-5 text-sm font-semibold text-stone-200 transition hover:border-amber-700"
             onClick={() => navigate('/cliente')}
           >
             Voltar
           </button>
           <button
             type="button"
-            className="min-h-12 rounded bg-amber-400 px-5 text-sm font-semibold text-stone-950 transition hover:bg-amber-300"
+            className="min-h-12 rounded-md bg-amber-400 px-5 text-sm font-bold text-stone-950 shadow-lg shadow-amber-950/20 transition hover:bg-amber-300"
             onClick={handleBookingRequest}
           >
             Solicitar Agendamento

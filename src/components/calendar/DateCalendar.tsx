@@ -85,11 +85,11 @@ export function DateCalendar({
   }
 
   return (
-    <div className="rounded-md border border-stone-800 bg-stone-900 p-3">
+    <div className="rounded-md border border-stone-800 bg-stone-900/90 p-3 shadow-sm shadow-black/20">
       <div className="mb-3 flex items-center justify-between gap-3">
         <button
           type="button"
-          className="min-h-10 rounded border border-stone-700 px-3 text-sm font-semibold text-stone-200 disabled:cursor-not-allowed disabled:opacity-30"
+          className="min-h-10 rounded-md border border-stone-700 bg-stone-950/60 px-3 text-sm font-semibold text-stone-200 transition hover:border-amber-700 disabled:cursor-not-allowed disabled:opacity-30"
           disabled={isPreviousMonthDisabled}
           onClick={handlePreviousMonth}
         >
@@ -100,7 +100,7 @@ export function DateCalendar({
         </p>
         <button
           type="button"
-          className="min-h-10 rounded border border-stone-700 px-3 text-sm font-semibold text-stone-200"
+          className="min-h-10 rounded-md border border-stone-700 bg-stone-950/60 px-3 text-sm font-semibold text-stone-200 transition hover:border-amber-700"
           onClick={handleNextMonth}
         >
           Proximo
@@ -123,13 +123,13 @@ export function DateCalendar({
               key={calendarDay.isoDate}
               type="button"
               className={[
-                'aspect-square rounded text-sm font-medium transition',
+                'aspect-square rounded-md border text-sm font-semibold transition',
                 isSelected
-                  ? 'bg-amber-400 text-stone-950'
-                  : 'bg-stone-950 text-stone-100',
+                  ? 'border-amber-400 bg-amber-400 text-stone-950'
+                  : 'border-stone-800 bg-stone-950 text-stone-100',
                 isDisabled
                   ? 'cursor-not-allowed opacity-30'
-                  : 'hover:bg-stone-800',
+                  : 'hover:border-amber-700 hover:bg-stone-800',
               ].join(' ')}
               disabled={isDisabled}
               onClick={() => onSelectDate(calendarDay.isoDate)}

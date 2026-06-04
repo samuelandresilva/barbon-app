@@ -112,7 +112,7 @@ export function ServicePage() {
         <div className="flex justify-end">
           <button
             type="button"
-            className="min-h-12 rounded bg-amber-400 px-5 text-sm font-semibold text-stone-950 transition enabled:hover:bg-amber-300 disabled:cursor-not-allowed disabled:bg-stone-700 disabled:text-stone-400"
+            className="min-h-12 rounded-md bg-amber-400 px-5 text-sm font-bold text-stone-950 shadow-lg shadow-amber-950/20 transition enabled:hover:bg-amber-300 disabled:cursor-not-allowed disabled:bg-stone-700 disabled:text-stone-400 disabled:shadow-none"
             disabled={!servicoSelecionado}
             onClick={() => navigate('/barbeiros')}
           >
