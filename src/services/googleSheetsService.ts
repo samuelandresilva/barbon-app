@@ -1,25 +1,25 @@
 import type {
-  AgendaBarbeiro,
-  Barbearia,
-  Barbeiro,
-  BarbeiroServico,
+  AgendaProfissional,
+  DadosEmpresa,
+  Profissional,
   Servico,
 } from '../types'
+import type { ProfissionalServico } from '../types/ProfissionalServico'
 
 export interface GoogleSheetsData {
-  barbearia: Barbearia
+  dadosEmpresa: DadosEmpresa
   servicos: Servico[]
-  barbeiros: Barbeiro[]
-  barbeiroServicos: BarbeiroServico[]
-  agendas: AgendaBarbeiro[]
+  profissionais: Profissional[]
+  profissionalServicos: ProfissionalServico[]
+  agendas: AgendaProfissional[]
 }
 
 type GoogleSheetName =
-  | 'barbearia'
+  | 'dados_empresa'
   | 'servicos'
-  | 'barbeiros'
-  | 'barbeiro_servicos'
-  | 'barbeiro_agendas'
+  | 'profissional'
+  | 'profissional_servicos'
+  | 'profissional_agendas'
 
 type SheetRow = Record<string, string>
 
@@ -141,7 +141,7 @@ function parseNumber(value: string) {
   return Number(value.replace(',', '.'))
 }
 
-function mapBarbearia(row: SheetRow): Barbearia {
+function mapDadosEmpresa(row: SheetRow): DadosEmpresa {
   return {
     nome: row.nome,
     telefoneWhatsapp: row.telefone_whatsapp,
@@ -164,7 +164,7 @@ function mapServico(row: SheetRow): Servico {
   }
 }
 
-function mapBarbeiro(row: SheetRow): Barbeiro {
+function mapProfissional(row: SheetRow): Profissional {
   return {
     id: row.id,
     nome: row.nome,
@@ -174,16 +174,16 @@ function mapBarbeiro(row: SheetRow): Barbeiro {
   }
 }
 
-function mapBarbeiroServico(row: SheetRow): BarbeiroServico {
+function mapProfissionalServico(row: SheetRow): ProfissionalServico {
   return {
-    barbeiroId: row.barbeiro_id,
+    profissionalId: row.profissional_id,
     servicoId: row.servico_id,
   }
 }
 
-function mapAgenda(row: SheetRow): AgendaBarbeiro {
+function mapAgenda(row: SheetRow): AgendaProfissional {
   return {
-    barbeiroId: row.barbeiro_id,
+    profissionalId: row.profissional_id,
     googleCalendarId: row.google_calendar_id,
     horaInicio: row.hora_inicio,
     horaFim: row.hora_fim,
@@ -192,15 +192,15 @@ function mapAgenda(row: SheetRow): AgendaBarbeiro {
   }
 }
 
-export async function getBarbearia(): Promise<Barbearia> {
+export async function getDadosEmpresa(): Promise<DadosEmpresa> {
   try {
-    const [barbeariaRow] = await getSheetRows('barbearia')
+    const [dadosEmpresaRow] = await getSheetRows('dados_empresa')
 
-    if (!barbeariaRow) {
-      throw new Error('Dados da barbearia não encontrados.')
+    if (!dadosEmpresaRow) {
+      throw new Error('Dados da empresa não encontrados.')
     }
 
-    return mapBarbearia(barbeariaRow)
+    return mapDadosEmpresa(dadosEmpresaRow)
   } catch {
     throw new Error('Não foi possível carregar as informações do estabelecimento.')
   }
@@ -216,29 +216,29 @@ export async function getServicos(): Promise<Servico[]> {
   }
 }
 
-export async function getBarbeiros(): Promise<Barbeiro[]> {
+export async function getProfissionais(): Promise<Profissional[]> {
   try {
-    const rows = await getSheetRows('barbeiros')
+    const rows = await getSheetRows('profissional')
 
-    return rows.map(mapBarbeiro).filter((barbeiro) => barbeiro.ativo)
+    return rows.map(mapProfissional).filter((profissional) => profissional.ativo)
   } catch {
     throw new Error('Não foi possível carregar os profissionais disponíveis.')
   }
 }
 
-export async function getBarbeiroServicos(): Promise<BarbeiroServico[]> {
+export async function getProfissionalServicos(): Promise<ProfissionalServico[]> {
   try {
-    const rows = await getSheetRows('barbeiro_servicos')
+    const rows = await getSheetRows('profissional_servicos')
 
-    return rows.map(mapBarbeiroServico)
+    return rows.map(mapProfissionalServico)
   } catch {
     throw new Error('Não foi possível carregar os vínculos de serviços.')
   }
 }
 
-export async function getAgendas(): Promise<AgendaBarbeiro[]> {
+export async function getAgendas(): Promise<AgendaProfissional[]> {
   try {
-    const rows = await getSheetRows('barbeiro_agendas')
+    const rows = await getSheetRows('profissional_agendas')
 
     return rows.map(mapAgenda).filter((agenda) => agenda.ativo)
   } catch {
@@ -248,20 +248,20 @@ export async function getAgendas(): Promise<AgendaBarbeiro[]> {
 
 export async function getGoogleSheetsData(): Promise<GoogleSheetsData> {
   try {
-    const [barbearia, servicos, barbeiros, barbeiroServicos, agendas] =
+    const [dadosEmpresa, servicos, profissionais, profissionalServicos, agendas] =
       await Promise.all([
-        getBarbearia(),
+        getDadosEmpresa(),
         getServicos(),
-        getBarbeiros(),
-        getBarbeiroServicos(),
+        getProfissionais(),
+        getProfissionalServicos(),
         getAgendas(),
       ])
 
     return {
-      barbearia,
+      dadosEmpresa,
       servicos,
-      barbeiros,
-      barbeiroServicos,
+      profissionais,
+      profissionalServicos,
       agendas,
     }
   } catch {

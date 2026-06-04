@@ -1,25 +1,25 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { BarberCard } from '../../components/barber'
+import { ProfessionalCard } from '../../components/professional'
 import { AppLayout, HeaderOakbeard } from '../../components/layout'
 import { useBooking } from '../../contexts'
 import {
-  getBarbearia,
-  getBarbeiroServicos,
-  getBarbeiros,
+  getDadosEmpresa,
+  getProfissionalServicos,
+  getProfissionais,
 } from '../../services/googleSheetsService'
-import type { Barbearia, Barbeiro, BarbeiroServico } from '../../types'
+import type { DadosEmpresa, Profissional, ProfissionalServico } from '../../types'
 
-export function BarberPage() {
+export function ProfessionalPage() {
   const navigate = useNavigate()
   const {
-    barbeiroSelecionado,
+    profissionalSelecionado,
     servicoSelecionado,
-    setBarbeiroSelecionado,
+    setProfissionalSelecionado,
   } = useBooking()
-  const [barbearia, setBarbearia] = useState<Barbearia | null>(null)
-  const [barbeiros, setBarbeiros] = useState<Barbeiro[]>([])
-  const [barbeiroServicos, setBarbeiroServicos] = useState<BarbeiroServico[]>(
+  const [dadosEmpresa, setDadosEmpresa] = useState<DadosEmpresa | null>(null)
+  const [profissionais, setProfissionais] = useState<Profissional[]>([])
+  const [profissionalServicos, setProfissionalServicos] = useState<ProfissionalServico[]>(
     [],
   )
   const [isLoading, setIsLoading] = useState(true)
@@ -33,19 +33,19 @@ export function BarberPage() {
         setIsLoading(true)
         setErrorMessage('')
         const [
-          loadedBarbearia,
-          loadedBarbeiros,
-          loadedBarbeiroServicos,
+          loadedDadosEmpresa,
+          loadedProfissionais,
+          loadedProfissionalServicos,
         ] = await Promise.all([
-          getBarbearia(),
-          getBarbeiros(),
-          getBarbeiroServicos(),
+          getDadosEmpresa(),
+          getProfissionais(),
+          getProfissionalServicos(),
         ])
 
         if (isMounted) {
-          setBarbearia(loadedBarbearia)
-          setBarbeiros(loadedBarbeiros)
-          setBarbeiroServicos(loadedBarbeiroServicos)
+          setDadosEmpresa(loadedDadosEmpresa)
+          setProfissionais(loadedProfissionais)
+          setProfissionalServicos(loadedProfissionalServicos)
         }
       } catch {
         if (isMounted) {
@@ -65,22 +65,22 @@ export function BarberPage() {
     }
   }, [])
 
-  const barbeirosCompativeis = useMemo(() => {
+  const profissionaisCompativeis = useMemo(() => {
     if (!servicoSelecionado) {
       return []
     }
 
-    const compatibleBarberIds = new Set(
-      barbeiroServicos
+    const compatibleProfissionalIds = new Set(
+      profissionalServicos
         .filter((item) => item.servicoId === servicoSelecionado.id)
-        .map((item) => item.barbeiroId),
+        .map((item) => item.profissionalId),
     )
 
-    return barbeiros.filter((barbeiro) => compatibleBarberIds.has(barbeiro.id))
-  }, [barbeiroServicos, barbeiros, servicoSelecionado])
+    return profissionais.filter((profissional) => compatibleProfissionalIds.has(profissional.id))
+  }, [profissionalServicos, profissionais, servicoSelecionado])
 
-  const selectedBarberIsCompatible = barbeirosCompativeis.some(
-    (barbeiro) => barbeiro.id === barbeiroSelecionado?.id,
+  const selectedProfissionalIsCompatible = profissionaisCompativeis.some(
+    (profissional) => profissional.id === profissionalSelecionado?.id,
   )
 
   if (!servicoSelecionado) {
@@ -118,7 +118,7 @@ export function BarberPage() {
     )
   }
 
-  if (errorMessage || !barbearia) {
+  if (errorMessage || !dadosEmpresa) {
     return (
       <div className="min-h-dvh bg-transparent text-[#3f3437]">
         <HeaderOakbeard />
@@ -132,7 +132,7 @@ export function BarberPage() {
   }
 
   return (
-    <AppLayout barbearia={barbearia} currentStep="barbeiro">
+    <AppLayout dadosEmpresa={dadosEmpresa} currentStep="profissional">
       <div className="flex flex-col gap-5">
         <div>
           <h1 className="text-2xl font-semibold text-[#3f3437]">
@@ -144,12 +144,12 @@ export function BarberPage() {
         </div>
 
         <div className="grid gap-3">
-          {barbeirosCompativeis.map((barbeiro) => (
-            <BarberCard
-              key={barbeiro.id}
-              barbeiro={barbeiro}
-              isSelected={barbeiroSelecionado?.id === barbeiro.id}
-              onSelect={setBarbeiroSelecionado}
+          {profissionaisCompativeis.map((profissional) => (
+            <ProfessionalCard
+              key={profissional.id}
+              profissional={profissional}
+              isSelected={profissionalSelecionado?.id === profissional.id}
+              onSelect={setProfissionalSelecionado}
             />
           ))}
         </div>
@@ -165,7 +165,7 @@ export function BarberPage() {
           <button
             type="button"
             className="min-h-12 rounded-md bg-[#d88ca4] px-5 text-sm font-bold text-white shadow-lg shadow-[#3f3437]/15 transition enabled:hover:bg-[#c97891] disabled:cursor-not-allowed disabled:bg-[#f8e7ed] disabled:text-[#cdb5bd] disabled:shadow-none"
-            disabled={!selectedBarberIsCompatible}
+            disabled={!selectedProfissionalIsCompatible}
             onClick={() => navigate('/data')}
           >
             Continuar

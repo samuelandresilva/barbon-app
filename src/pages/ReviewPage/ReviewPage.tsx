@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AppLayout, HeaderOakbeard } from '../../components/layout'
 import { useBooking } from '../../contexts'
-import { getBarbearia } from '../../services/googleSheetsService'
+import { getDadosEmpresa } from '../../services/googleSheetsService'
 import {
   buildWhatsAppMessage,
   buildWhatsAppUrl,
   openWhatsAppUrl,
 } from '../../services/whatsappService'
-import type { Barbearia } from '../../types'
+import type { DadosEmpresa } from '../../types'
 
 const currencyFormatter = new Intl.NumberFormat('pt-BR', {
   currency: 'BRL',
@@ -26,28 +26,28 @@ function formatDate(data: string) {
 export function ReviewPage() {
   const navigate = useNavigate()
   const {
-    barbeiroSelecionado,
+    profissionalSelecionado,
     data,
     horario,
     nomeCliente,
     servicoSelecionado,
     telefoneCliente,
   } = useBooking()
-  const [barbearia, setBarbearia] = useState<Barbearia | null>(null)
+  const [empresa, setDadosEmpresa] = useState<DadosEmpresa | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
     let isMounted = true
 
-    async function loadBarbearia() {
+    async function loadDadosEmpresa() {
       try {
         setIsLoading(true)
         setErrorMessage('')
-        const loadedBarbearia = await getBarbearia()
+        const loadedDadosEmpresa = await getDadosEmpresa()
 
         if (isMounted) {
-          setBarbearia(loadedBarbearia)
+          setDadosEmpresa(loadedDadosEmpresa)
         }
       } catch {
         if (isMounted) {
@@ -62,7 +62,7 @@ export function ReviewPage() {
       }
     }
 
-    void loadBarbearia()
+    void loadDadosEmpresa()
 
     return () => {
       isMounted = false
@@ -71,7 +71,7 @@ export function ReviewPage() {
 
   if (
     !servicoSelecionado ||
-    !barbeiroSelecionado ||
+    !profissionalSelecionado ||
     !data ||
     !horario ||
     !nomeCliente ||
@@ -111,7 +111,7 @@ export function ReviewPage() {
     )
   }
 
-  if (errorMessage || !barbearia) {
+  if (errorMessage || !empresa) {
     return (
       <div className="min-h-dvh bg-transparent text-[#3f3437]">
         <HeaderOakbeard />
@@ -125,9 +125,9 @@ export function ReviewPage() {
     )
   }
 
-  const confirmedBarbearia = barbearia
+  const confirmedDadosEmpresa = empresa
   const bookingDetails = {
-    barbeiro: barbeiroSelecionado,
+    profissional: profissionalSelecionado,
     data,
     horario,
     nomeCliente,
@@ -139,7 +139,7 @@ export function ReviewPage() {
     const message = buildWhatsAppMessage(bookingDetails)
     const whatsappUrl = buildWhatsAppUrl({
       message,
-      telefoneWhatsapp: confirmedBarbearia.telefoneWhatsapp,
+      telefoneWhatsapp: confirmedDadosEmpresa.telefoneWhatsapp,
     })
 
     openWhatsAppUrl(whatsappUrl)
@@ -147,7 +147,7 @@ export function ReviewPage() {
   }
 
   return (
-    <AppLayout barbearia={barbearia} currentStep="revisao">
+    <AppLayout dadosEmpresa={empresa} currentStep="revisao">
       <div className="flex flex-col gap-5">
         <div>
           <h1 className="text-2xl font-semibold text-[#3f3437]">
@@ -177,7 +177,7 @@ export function ReviewPage() {
               Profissional
             </dt>
             <dd className="mt-2 text-base font-semibold text-[#3f3437]">
-              {barbeiroSelecionado.nome}
+              {profissionalSelecionado?.nome}
             </dd>
           </div>
 

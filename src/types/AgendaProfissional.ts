@@ -1,5 +1,5 @@
-export interface AgendaBarbeiro {
-  barbeiroId: string
+export interface AgendaProfissional {
+  profissionalId: string
   googleCalendarId: string
   horaInicio: string
   horaFim: string

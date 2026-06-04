@@ -1,4 +1,4 @@
-export interface Barbearia {
+export interface DadosEmpresa {
   nome: string
   telefoneWhatsapp: string
   endereco: string

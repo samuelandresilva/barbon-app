@@ -1,9 +1,9 @@
 import { createContext } from 'react'
-import type { Barbeiro, Servico } from '../types'
+import type { Profissional, Servico } from '../types'
 
 export interface BookingState {
   servicoSelecionado: Servico | null
-  barbeiroSelecionado: Barbeiro | null
+  profissionalSelecionado: Profissional | null
   data: string
   horario: string
   nomeCliente: string
@@ -12,7 +12,7 @@ export interface BookingState {
 
 export interface BookingContextValue extends BookingState {
   setServicoSelecionado: (servico: Servico | null) => void
-  setBarbeiroSelecionado: (barbeiro: Barbeiro | null) => void
+  setProfissionalSelecionado: (profissional: Profissional | null) => void
   setData: (data: string) => void
   setHorario: (horario: string) => void
   setNomeCliente: (nomeCliente: string) => void
@@ -22,7 +22,7 @@ export interface BookingContextValue extends BookingState {
 
 export const initialBookingState: BookingState = {
   servicoSelecionado: null,
-  barbeiroSelecionado: null,
+  profissionalSelecionado: null,
   data: '',
   horario: '',
   nomeCliente: '',

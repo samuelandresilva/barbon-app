@@ -1,4 +1,4 @@
-export interface Barbeiro {
+export interface Profissional {
   id: string
   nome: string
   descricao: string

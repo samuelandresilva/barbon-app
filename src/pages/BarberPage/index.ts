@@ -1,1 +1,1 @@
-export { BarberPage } from './BarberPage'
+export { ProfessionalPage } from './ProfessionalPage'

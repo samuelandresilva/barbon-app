@@ -3,33 +3,33 @@ import { useNavigate } from 'react-router-dom'
 import { DateCalendar } from '../../components/calendar'
 import { AppLayout, HeaderOakbeard } from '../../components/layout'
 import { useBooking } from '../../contexts'
-import { getBarbearia } from '../../services/googleSheetsService'
-import type { Barbearia } from '../../types'
+import { getDadosEmpresa } from '../../services/googleSheetsService'
+import type { DadosEmpresa } from '../../types'
 
 export function DatePage() {
   const navigate = useNavigate()
   const {
-    barbeiroSelecionado,
+    profissionalSelecionado,
     data,
     servicoSelecionado,
     setData,
     setHorario,
   } = useBooking()
-  const [barbearia, setBarbearia] = useState<Barbearia | null>(null)
+  const [empresa, setDadosEmpresa] = useState<DadosEmpresa | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
     let isMounted = true
 
-    async function loadBarbearia() {
+    async function loadDadosEmpresa() {
       try {
         setIsLoading(true)
         setErrorMessage('')
-        const loadedBarbearia = await getBarbearia()
+        const loadedDadosEmpresa = await getDadosEmpresa()
 
         if (isMounted) {
-          setBarbearia(loadedBarbearia)
+          setDadosEmpresa(loadedDadosEmpresa)
         }
       } catch {
         if (isMounted) {
@@ -44,7 +44,7 @@ export function DatePage() {
       }
     }
 
-    void loadBarbearia()
+    void loadDadosEmpresa()
 
     return () => {
       isMounted = false
@@ -56,7 +56,7 @@ export function DatePage() {
     setHorario('')
   }
 
-  if (!servicoSelecionado || !barbeiroSelecionado) {
+  if (!servicoSelecionado || !profissionalSelecionado) {
     return (
       <div className="min-h-dvh bg-transparent text-[#3f3437]">
         <HeaderOakbeard />
@@ -91,7 +91,7 @@ export function DatePage() {
     )
   }
 
-  if (errorMessage || !barbearia) {
+  if (errorMessage || !empresa) {
     return (
       <div className="min-h-dvh bg-transparent text-[#3f3437]">
         <HeaderOakbeard />
@@ -106,7 +106,7 @@ export function DatePage() {
   }
 
   return (
-    <AppLayout barbearia={barbearia} currentStep="data">
+    <AppLayout dadosEmpresa={empresa} currentStep="data">
       <div className="flex flex-col gap-5">
         <div>
           <h1 className="text-2xl font-semibold text-[#3f3437]">
@@ -123,7 +123,7 @@ export function DatePage() {
           <button
             type="button"
             className="min-h-12 rounded-md border border-[#f3d4dc] bg-white px-5 text-sm font-semibold text-[#7b666d] transition hover:border-[#d8a5b5]"
-            onClick={() => navigate('/barbeiros')}
+            onClick={() => navigate('/profissionais')}
           >
             Voltar
           </button>

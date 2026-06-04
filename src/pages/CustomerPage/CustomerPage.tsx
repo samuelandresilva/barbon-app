@@ -2,8 +2,8 @@ import { type ChangeEvent, useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AppLayout, HeaderOakbeard } from '../../components/layout'
 import { useBooking } from '../../contexts'
-import { getBarbearia } from '../../services/googleSheetsService'
-import type { Barbearia } from '../../types'
+import { getDadosEmpresa } from '../../services/googleSheetsService'
+import type { DadosEmpresa } from '../../types'
 
 function formatPhone(value: string) {
   const digits = value.replace(/\D/g, '').slice(0, 11)
@@ -26,7 +26,7 @@ function isValidPhone(value: string) {
 export function CustomerPage() {
   const navigate = useNavigate()
   const {
-    barbeiroSelecionado,
+    profissionalSelecionado,
     data,
     horario,
     nomeCliente,
@@ -35,7 +35,7 @@ export function CustomerPage() {
     setTelefoneCliente,
     telefoneCliente,
   } = useBooking()
-  const [barbearia, setBarbearia] = useState<Barbearia | null>(null)
+  const [empresa, setDadosEmpresa] = useState<DadosEmpresa | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -52,14 +52,14 @@ export function CustomerPage() {
   useEffect(() => {
     let isMounted = true
 
-    async function loadBarbearia() {
+    async function loadDadosEmpresa() {
       try {
         setIsLoading(true)
         setErrorMessage('')
-        const loadedBarbearia = await getBarbearia()
+        const loadedDadosEmpresa = await getDadosEmpresa()
 
         if (isMounted) {
-          setBarbearia(loadedBarbearia)
+          setDadosEmpresa(loadedDadosEmpresa)
         }
       } catch {
         if (isMounted) {
@@ -74,7 +74,7 @@ export function CustomerPage() {
       }
     }
 
-    void loadBarbearia()
+    void loadDadosEmpresa()
 
     return () => {
       isMounted = false
@@ -89,7 +89,7 @@ export function CustomerPage() {
     setTelefoneCliente(formatPhone(event.target.value))
   }
 
-  if (!servicoSelecionado || !barbeiroSelecionado || !data || !horario) {
+  if (!servicoSelecionado || !profissionalSelecionado || !data || !horario) {
     return (
       <div className="min-h-dvh bg-transparent text-[#3f3437]">
         <HeaderOakbeard />
@@ -124,7 +124,7 @@ export function CustomerPage() {
     )
   }
 
-  if (errorMessage || !barbearia) {
+  if (errorMessage || !empresa) {
     return (
       <div className="min-h-dvh bg-transparent text-[#3f3437]">
         <HeaderOakbeard />
@@ -139,7 +139,7 @@ export function CustomerPage() {
   }
 
   return (
-    <AppLayout barbearia={barbearia} currentStep="dados">
+    <AppLayout dadosEmpresa={empresa} currentStep="dados">
       <div className="flex flex-col gap-5">
         <div>
           <h1 className="text-2xl font-semibold text-[#3f3437]">

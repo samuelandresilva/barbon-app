@@ -4,19 +4,19 @@ import { AppLayout, HeaderOakbeard } from '../../components/layout'
 import { ServiceCard } from '../../components/service'
 import { useBooking } from '../../contexts'
 import {
-  getBarbearia,
+  getDadosEmpresa,
   getServicos,
 } from '../../services/googleSheetsService'
-import type { Barbearia, Servico } from '../../types'
+import type { DadosEmpresa, Servico } from '../../types'
 
 export function ServicePage() {
   const navigate = useNavigate()
   const {
     servicoSelecionado,
-    setBarbeiroSelecionado,
+    setProfissionalSelecionado,
     setServicoSelecionado,
   } = useBooking()
-  const [barbearia, setBarbearia] = useState<Barbearia | null>(null)
+  const [empresa, setDadosEmpresa] = useState<DadosEmpresa | null>(null)
   const [servicos, setServicos] = useState<Servico[]>([])
   const [serviceFilter, setServiceFilter] = useState('')
   const [isLoading, setIsLoading] = useState(true)
@@ -43,13 +43,13 @@ export function ServicePage() {
       try {
         setIsLoading(true)
         setErrorMessage('')
-        const [loadedBarbearia, loadedServicos] = await Promise.all([
-          getBarbearia(),
+        const [loadedDadosEmpresa, loadedServicos] = await Promise.all([
+          getDadosEmpresa(),
           getServicos(),
         ])
 
         if (isMounted) {
-          setBarbearia(loadedBarbearia)
+          setDadosEmpresa(loadedDadosEmpresa)
           setServicos(loadedServicos)
         }
       } catch {
@@ -72,7 +72,7 @@ export function ServicePage() {
 
   function handleServiceSelect(servico: Servico) {
     setServicoSelecionado(servico)
-    setBarbeiroSelecionado(null)
+    setProfissionalSelecionado(null)
   }
 
   if (isLoading) {
@@ -88,7 +88,7 @@ export function ServicePage() {
     )
   }
 
-  if (errorMessage || !barbearia) {
+  if (errorMessage || !empresa) {
     return (
       <div className="min-h-dvh bg-transparent text-[#3f3437]">
         <HeaderOakbeard />
@@ -102,7 +102,7 @@ export function ServicePage() {
   }
 
   return (
-    <AppLayout barbearia={barbearia} currentStep="servico">
+    <AppLayout dadosEmpresa={empresa} currentStep="servico">
       <div className="flex flex-col gap-5">
         <div>
           <h1 className="text-2xl font-semibold text-[#3f3437]">
@@ -148,7 +148,7 @@ export function ServicePage() {
             type="button"
             className="min-h-12 rounded-md bg-[#d88ca4] px-5 text-sm font-bold text-white shadow-lg shadow-[#3f3437]/15 transition enabled:hover:bg-[#c97891] disabled:cursor-not-allowed disabled:bg-[#f8e7ed] disabled:text-[#cdb5bd] disabled:shadow-none"
             disabled={!servicoSelecionado}
-            onClick={() => navigate('/barbeiros')}
+            onClick={() => navigate('/profissionais')}
           >
             Continuar
           </button>

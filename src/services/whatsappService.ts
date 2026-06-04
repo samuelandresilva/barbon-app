@@ -1,7 +1,7 @@
-import type { Barbeiro, Servico } from '../types'
+import type { Profissional, Servico } from '../types'
 
 interface BuildWhatsAppMessageParams {
-  barbeiro: Barbeiro
+  profissional: Profissional
   data: string
   horario: string
   nomeCliente: string
@@ -32,7 +32,7 @@ function onlyDigits(value: string) {
 }
 
 export function buildWhatsAppMessage({
-  barbeiro,
+  profissional,
   data,
   horario,
   nomeCliente,
@@ -46,7 +46,7 @@ export function buildWhatsAppMessage({
     `Telefone: ${telefoneCliente}`,
     `Serviço: ${servico.nome}`,
     `Preço: ${currencyFormatter.format(servico.preco)}`,
-    `Profissional: ${barbeiro.nome}`,
+    `Profissional: ${profissional.nome}`,
     `Data: ${formatDate(data)}`,
     `Horário: ${horario}`,
     '',

@@ -1,12 +1,12 @@
 import type {
-  AgendaBarbeiro,
+  AgendaProfissional,
   EventoOcupado,
   HorarioDisponivel,
   Servico,
 } from '../../types'
 
 interface GenerateAvailableSlotsParams {
-  agenda: AgendaBarbeiro
+  agenda: AgendaProfissional
   data: string
   eventosOcupados: EventoOcupado[]
   servico: Servico

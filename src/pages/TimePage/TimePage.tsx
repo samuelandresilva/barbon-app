@@ -7,20 +7,20 @@ import { generateAvailableSlots } from '../../domain/rules'
 import { getEventosOcupados } from '../../services/googleCalendarService'
 import {
   getAgendas,
-  getBarbearia,
+  getDadosEmpresa,
 } from '../../services/googleSheetsService'
-import type { Barbearia, HorarioDisponivel } from '../../types'
+import type { DadosEmpresa, HorarioDisponivel } from '../../types'
 
 export function TimePage() {
   const navigate = useNavigate()
   const {
-    barbeiroSelecionado,
+    profissionalSelecionado,
     data,
     horario,
     servicoSelecionado,
     setHorario,
   } = useBooking()
-  const [barbearia, setBarbearia] = useState<Barbearia | null>(null)
+  const [empresa, setDadosEmpresa] = useState<DadosEmpresa | null>(null)
   const [horariosDisponiveis, setHorariosDisponiveis] = useState<
     HorarioDisponivel[]
   >([])
@@ -31,7 +31,7 @@ export function TimePage() {
     let isMounted = true
 
     async function loadAvailableSlots() {
-      if (!servicoSelecionado || !barbeiroSelecionado || !data) {
+      if (!servicoSelecionado || !profissionalSelecionado || !data) {
         setIsLoading(false)
         return
       }
@@ -40,12 +40,12 @@ export function TimePage() {
         setIsLoading(true)
         setErrorMessage('')
 
-        const [loadedBarbearia, agendas] = await Promise.all([
-          getBarbearia(),
+        const [loadedDadosEmpresa, agendas] = await Promise.all([
+          getDadosEmpresa(),
           getAgendas(),
         ])
         const agenda = agendas.find(
-          (item) => item.barbeiroId === barbeiroSelecionado.id,
+          (item) => item.profissionalId === profissionalSelecionado.id,
         )
 
         if (!agenda) {
@@ -64,7 +64,7 @@ export function TimePage() {
         })
 
         if (isMounted) {
-          setBarbearia(loadedBarbearia)
+          setDadosEmpresa(loadedDadosEmpresa)
           setHorariosDisponiveis(availableSlots)
         }
       } catch {
@@ -85,13 +85,13 @@ export function TimePage() {
     return () => {
       isMounted = false
     }
-  }, [barbeiroSelecionado, data, servicoSelecionado])
+  }, [profissionalSelecionado, data, servicoSelecionado])
 
   function handleTimeSelect(selectedTime: string) {
     setHorario(selectedTime)
   }
 
-  if (!servicoSelecionado || !barbeiroSelecionado || !data) {
+  if (!servicoSelecionado || !profissionalSelecionado || !data) {
     return (
       <div className="min-h-dvh bg-transparent text-[#3f3437]">
         <HeaderOakbeard />
@@ -126,7 +126,7 @@ export function TimePage() {
     )
   }
 
-  if (errorMessage || !barbearia) {
+  if (errorMessage || !empresa) {
     return (
       <div className="min-h-dvh bg-transparent text-[#3f3437]">
         <HeaderOakbeard />
@@ -140,7 +140,7 @@ export function TimePage() {
   }
 
   return (
-    <AppLayout barbearia={barbearia} currentStep="horario">
+    <AppLayout dadosEmpresa={empresa} currentStep="horario">
       <div className="flex flex-col gap-5">
         <div>
           <h1 className="text-2xl font-semibold text-[#3f3437]">

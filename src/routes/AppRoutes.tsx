@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { BarberPage } from '../pages/BarberPage'
+import { ProfessionalPage } from '../pages/BarberPage'
 import { CustomerPage } from '../pages/CustomerPage'
 import { DatePage } from '../pages/DatePage'
 import { HomePage } from '../pages/HomePage'
@@ -13,7 +13,7 @@ export function AppRoutes() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/servicos" element={<ServicePage />} />
-      <Route path="/barbeiros" element={<BarberPage />} />
+      <Route path="/profissionais" element={<ProfessionalPage />} />
       <Route path="/data" element={<DatePage />} />
       <Route path="/horarios" element={<TimePage />} />
       <Route path="/cliente" element={<CustomerPage />} />

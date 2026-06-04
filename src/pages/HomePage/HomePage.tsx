@@ -1,26 +1,26 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AppLayout, HeaderOakbeard } from '../../components/layout'
-import { getBarbearia } from '../../services/googleSheetsService'
-import type { Barbearia } from '../../types'
+import { getDadosEmpresa } from '../../services/googleSheetsService'
+import type { DadosEmpresa } from '../../types'
 
 export function HomePage() {
   const navigate = useNavigate()
-  const [barbearia, setBarbearia] = useState<Barbearia | null>(null)
+  const [empresa, setDadosEmpresa] = useState<DadosEmpresa | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
     let isMounted = true
 
-    async function loadBarbearia() {
+    async function loadDadosEmpresa() {
       try {
         setIsLoading(true)
         setErrorMessage('')
-        const loadedBarbearia = await getBarbearia()
+        const loadedDadosEmpresa = await getDadosEmpresa()
 
         if (isMounted) {
-          setBarbearia(loadedBarbearia)
+          setDadosEmpresa(loadedDadosEmpresa)
         }
       } catch {
         if (isMounted) {
@@ -35,7 +35,7 @@ export function HomePage() {
       }
     }
 
-    void loadBarbearia()
+    void loadDadosEmpresa()
 
     return () => {
       isMounted = false
@@ -55,7 +55,7 @@ export function HomePage() {
     )
   }
 
-  if (errorMessage || !barbearia) {
+  if (errorMessage || !empresa) {
     return (
       <div className="min-h-dvh bg-transparent text-[#3f3437]">
         <HeaderOakbeard />
@@ -79,7 +79,7 @@ export function HomePage() {
   }
 
   return (
-    <AppLayout barbearia={barbearia}>
+    <AppLayout dadosEmpresa={empresa}>
       <div className="flex min-h-72 flex-col justify-center gap-6">
         <div>
           <p className="text-sm font-bold uppercase text-[#c97891]">

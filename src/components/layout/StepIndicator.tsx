@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 
 export type BookingStep =
   | 'servico'
-  | 'barbeiro'
+  | 'profissional'
   | 'data'
   | 'horario'
   | 'dados'
@@ -19,7 +19,7 @@ interface StepIndicatorProps {
 
 const bookingSteps: StepItem[] = [
   { id: 'servico', label: 'Serviço' },
-  { id: 'barbeiro', label: 'Profissional' },
+  { id: 'profissional', label: 'Profissional' },
   { id: 'data', label: 'Data' },
   { id: 'horario', label: 'Horário' },
   { id: 'dados', label: 'Dados' },

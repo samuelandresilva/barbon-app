@@ -1,4 +1,4 @@
-import type { Barbearia } from '../../types'
+import type { DadosEmpresa } from '../../types'
 import { formatBrazilianPhone } from "../../utils/formatPhone"
 import { getInitials } from '../../utils/getInitials'
 import { hasValidImageUrl } from '../../utils/hasValidImageUrl'
@@ -6,11 +6,11 @@ import { createGoogleMapsHref, createInstagramHref, createPhoneHref } from '../.
 import { FaInstagram } from "react-icons/fa"
 import { FaClock, FaPhone, FaLocationDot } from "react-icons/fa6"
 
-interface BarbeariaCardProps {
-  barbearia: Barbearia
+interface DadosEmpresaCardProps {
+  dadosEmpresa: DadosEmpresa
 }
 
-export function BarbeariaCard({ barbearia }: BarbeariaCardProps) {
+export function DadosEmpresaCard({ dadosEmpresa }: DadosEmpresaCardProps) {
   return (
     <section
       className="relative overflow-hidden rounded-2xl border border-[#f3d4dc] bg-white shadow-2xl shadow-[#3f3437]/10"
@@ -24,10 +24,10 @@ export function BarbeariaCard({ barbearia }: BarbeariaCardProps) {
         </p>
 
         <div className="flex items-center gap-4">
-          {hasValidImageUrl(barbearia.logoUrl) ? (
+          {hasValidImageUrl(dadosEmpresa.logoUrl) ? (
             <img
-              src={barbearia.logoUrl}
-              alt={`Logo da ${barbearia.nome}`}
+              src={dadosEmpresa.logoUrl}
+              alt={`Logo da ${dadosEmpresa.nome}`}
               className="size-20 shrink-0 rounded-2xl border border-[#f3d4dc] object-cover shadow-lg shadow-[#3f3437]/10 sm:size-24"
             />
           ) : (
@@ -35,18 +35,18 @@ export function BarbeariaCard({ barbearia }: BarbeariaCardProps) {
               className="grid size-20 shrink-0 place-items-center rounded-2xl border border-[#f3d4dc] bg-[#fff7f8] text-xl font-black text-[#c97891] sm:size-24"
               aria-hidden="true"
             >
-              {getInitials(barbearia.nome)}
+              {getInitials(dadosEmpresa.nome)}
             </div>
           )}
 
           <div className="min-w-0">
             <h2 className="truncate text-2xl font-black tracking-tight text-[#3f3437] sm:text-3xl">
-              {barbearia.nome}
+              {dadosEmpresa.nome}
             </h2>
 
-            {barbearia.descricao ? (
+            {dadosEmpresa.descricao ? (
               <p className="mt-1 line-clamp-2 text-sm leading-5 text-[#7b666d]">
-                {barbearia.descricao}
+                {dadosEmpresa.descricao}
               </p>
             ) : null}
           </div>
@@ -65,11 +65,11 @@ export function BarbeariaCard({ barbearia }: BarbeariaCardProps) {
               </dt>
               <dd className="mt-0.5 text-sm font-semibold text-[#3f3437]">
                 <a
-                  href={createPhoneHref(barbearia.telefoneWhatsapp)}
+                  href={createPhoneHref(dadosEmpresa.telefoneWhatsapp)}
                   className="text-sm font-semibold text-[#3f3437] underline-offset-4 transition hover:text-[#b66f87] hover:underline"
-                  aria-label={`Ligar para ${barbearia.nome}`}
+                  aria-label={`Ligar para ${dadosEmpresa.nome}`}
                 >
-                  {formatBrazilianPhone(barbearia.telefoneWhatsapp)}
+                  {formatBrazilianPhone(dadosEmpresa.telefoneWhatsapp)}
                 </a>
               </dd>
             </div>
@@ -85,13 +85,13 @@ export function BarbeariaCard({ barbearia }: BarbeariaCardProps) {
               </dt>
               <dd className="mt-0.5 text-sm font-semibold leading-5 text-[#3f3437]">
                 <a
-                  href={createGoogleMapsHref(barbearia.endereco)}
+                  href={createGoogleMapsHref(dadosEmpresa.endereco)}
                   target="_blank"
                   rel="noreferrer"
                   className="text-sm font-semibold leading-5 text-[#3f3437] underline-offset-4 transition hover:text-[#b66f87] hover:underline"
-                  aria-label={`Abrir endereço da ${barbearia.nome} no Google Maps`}
+                  aria-label={`Abrir endereço da ${dadosEmpresa.nome} no Google Maps`}
                 >
-                  {barbearia.endereco}
+                  {dadosEmpresa.endereco}
                 </a>
               </dd>
             </div>
@@ -107,21 +107,21 @@ export function BarbeariaCard({ barbearia }: BarbeariaCardProps) {
               </dt>
               <dd className="mt-0.5 text-sm font-semibold text-[#3f3437]">
                 <a
-                  href={createInstagramHref(barbearia.instagram)}
+                  href={createInstagramHref(dadosEmpresa.instagram)}
                   target="_blank"
                   rel="noreferrer"
                   className="text-sm font-semibold text-[#3f3437] underline-offset-4 transition hover:text-[#b66f87] hover:underline"
-                  aria-label={`Abrir Instagram da ${barbearia.nome}`}
+                  aria-label={`Abrir Instagram da ${dadosEmpresa.nome}`}
                 >
-                  {barbearia.instagram.startsWith("@")
-                    ? barbearia.instagram
-                    : `@${barbearia.instagram.replace("https://www.instagram.com/", "").replace("/", "")}`}
+                  {dadosEmpresa.instagram.startsWith("@")
+                    ? dadosEmpresa.instagram
+                    : `@${dadosEmpresa.instagram.replace("https://www.instagram.com/", "").replace("/", "")}`}
                 </a>
               </dd>
             </div>
           </div>
 
-          {barbearia.funcionamento ? (
+          {dadosEmpresa.funcionamento ? (
             <div className="flex items-start gap-3">
               <div className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-lg bg-[#f8e7ed] text-[#c97891]">
                 <FaClock className="size-4 text-[#c97891]" />
@@ -131,7 +131,7 @@ export function BarbeariaCard({ barbearia }: BarbeariaCardProps) {
                   Funcionamento
                 </dt>
                 <dd className="mt-0.5 whitespace-pre-line text-sm font-semibold leading-5 text-[#3f3437]">
-                  {barbearia.funcionamento}
+                  {dadosEmpresa.funcionamento}
                 </dd>
               </div>
             </div>

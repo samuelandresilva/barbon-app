@@ -1,5 +1,5 @@
 import { type PropsWithChildren, useState } from 'react'
-import type { Barbeiro, Servico } from '../types'
+import type { Profissional, Servico } from '../types'
 import {
   BookingContext,
   type BookingState,
@@ -9,8 +9,8 @@ import {
 export function BookingProvider({ children }: PropsWithChildren) {
   const [servicoSelecionado, setServicoSelecionado] =
     useState<Servico | null>(initialBookingState.servicoSelecionado)
-  const [barbeiroSelecionado, setBarbeiroSelecionado] =
-    useState<Barbeiro | null>(initialBookingState.barbeiroSelecionado)
+  const [profissionalSelecionado, setProfissionalSelecionado] =
+    useState<Profissional | null>(initialBookingState.profissionalSelecionado)
   const [data, setData] = useState(initialBookingState.data)
   const [horario, setHorario] = useState(initialBookingState.horario)
   const [nomeCliente, setNomeCliente] = useState(
@@ -22,7 +22,7 @@ export function BookingProvider({ children }: PropsWithChildren) {
 
   function resetBooking() {
     setServicoSelecionado(initialBookingState.servicoSelecionado)
-    setBarbeiroSelecionado(initialBookingState.barbeiroSelecionado)
+    setProfissionalSelecionado(initialBookingState.profissionalSelecionado)
     setData(initialBookingState.data)
     setHorario(initialBookingState.horario)
     setNomeCliente(initialBookingState.nomeCliente)
@@ -31,7 +31,7 @@ export function BookingProvider({ children }: PropsWithChildren) {
 
   const bookingState: BookingState = {
     servicoSelecionado,
-    barbeiroSelecionado,
+    profissionalSelecionado,
     data,
     horario,
     nomeCliente,
@@ -43,7 +43,7 @@ export function BookingProvider({ children }: PropsWithChildren) {
       value={{
         ...bookingState,
         setServicoSelecionado,
-        setBarbeiroSelecionado,
+        setProfissionalSelecionado,
         setData,
         setHorario,
         setNomeCliente,
