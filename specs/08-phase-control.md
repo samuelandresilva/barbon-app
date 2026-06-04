@@ -378,7 +378,46 @@
 - Nao foram implementados DatePage ou calendario da proxima fase.
 - O build e o lint foram executados com sucesso.
 
-- [ ] Fase 09 - Seleção de Data
+- [x] Fase 09 - Seleção de Data
+
+## Log - Fase 09 - Seleção de Data
+
+### Data da conclusao
+
+2026-06-03
+
+### Arquivos criados
+
+- src/components/calendar/DateCalendar.tsx
+- src/components/calendar/index.ts
+- src/pages/DatePage/DatePage.tsx
+- src/pages/DatePage/index.ts
+
+### Arquivos alterados
+
+- src/routes/AppRoutes.tsx
+- specs/08-phase-control.md
+
+### Comandos executados
+
+- Get-Content specs/08-phase-control.md
+- Get-Content src\pages\BarberPage\BarberPage.tsx
+- git status --short
+- npm run build
+- npm run lint
+- Remove-Item -LiteralPath .\dist -Recurse -Force
+
+### Observacoes importantes
+
+- A ultima fase concluida antes desta implementacao era a Fase 08 - Seleção de Barbeiro.
+- Foi criada a DatePage com verificacao de servico e barbeiro selecionados antes da escolha de data.
+- Foi criado um calendario mensal com navegacao para meses futuros.
+- Datas passadas e dias fora do mes visivel ficam indisponiveis.
+- A data selecionada e salva no BookingContext e o horario e limpo ao trocar a data.
+- O botao Continuar fica desabilitado ate existir data selecionada e navega para /horarios.
+- Nao foram implementados horarios disponiveis, Google Calendar mock ou calculo de disponibilidade.
+- O build e o lint foram executados com sucesso.
+
 - [ ] Fase 10 - Google Calendar Mock
 - [ ] Fase 11 - Regra de Disponibilidade
 - [ ] Fase 12 - Seleção de Horário
