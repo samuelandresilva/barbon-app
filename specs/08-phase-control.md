@@ -491,7 +491,54 @@
 - Nao foi implementada a TimePage da Fase 12.
 - O build e o lint foram executados com sucesso.
 
-- [ ] Fase 12 - Seleção de Horário
+- [x] Fase 12 - Seleção de Horário
+
+## Log - Fase 12 - Seleção de Horário
+
+### Data da conclusao
+
+2026-06-04
+
+### Arquivos criados
+
+- src/components/calendar/TimeSlotList.tsx
+- src/pages/TimePage/TimePage.tsx
+- src/pages/TimePage/index.ts
+
+### Arquivos alterados
+
+- src/components/calendar/index.ts
+- src/routes/AppRoutes.tsx
+- specs/08-phase-control.md
+
+### Comandos executados
+
+- Get-Content specs/08-phase-control.md
+- Get-Content specs/07-implementation-plan.md
+- git status --short
+- Get-Content src\routes\AppRoutes.tsx
+- Get-Content src\pages\DatePage\DatePage.tsx
+- Get-Content src\components\calendar\index.ts
+- Get-Content src\services\googleSheetsService.ts
+- Get-Content src\services\googleCalendarService.ts
+- Get-Content src\domain\rules\generateAvailableSlots.ts
+- Get-Content src\components\layout\AppLayout.tsx
+- Get-Content src\components\layout\StepIndicator.tsx
+- Get-Content src\types\HorarioDisponivel.ts
+- Get-Content src\contexts\bookingContext.ts
+- npm run build
+- npm run lint
+- Remove-Item -LiteralPath .\dist -Recurse -Force
+
+### Observacoes importantes
+
+- A ultima fase concluida antes desta implementacao era a Fase 11 - Regra de Disponibilidade.
+- Foi criada a TimePage consumindo agenda mockada, eventos ocupados mockados e a regra generateAvailableSlots().
+- Foi criado o TimeSlotList para exibir somente horarios disponiveis e permitir selecao unica.
+- O horario selecionado e salvo no BookingContext.
+- A rota /horarios foi conectada ao fluxo e o botao Continuar aponta para /cliente, que sera implementada na Fase 13.
+- O build e o lint foram executados com sucesso.
+
 - [ ] Fase 13 - Dados do Cliente
 - [ ] Fase 14 - Revisão
 - [ ] Fase 15 - WhatsApp

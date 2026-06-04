@@ -3,6 +3,7 @@ import { BarberPage } from '../pages/BarberPage'
 import { DatePage } from '../pages/DatePage'
 import { HomePage } from '../pages/HomePage'
 import { ServicePage } from '../pages/ServicePage'
+import { TimePage } from '../pages/TimePage'
 
 export function AppRoutes() {
   return (
@@ -11,6 +12,7 @@ export function AppRoutes() {
       <Route path="/servicos" element={<ServicePage />} />
       <Route path="/barbeiros" element={<BarberPage />} />
       <Route path="/data" element={<DatePage />} />
+      <Route path="/horarios" element={<TimePage />} />
     </Routes>
   )
 }
