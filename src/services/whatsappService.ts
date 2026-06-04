@@ -14,6 +14,11 @@ interface BuildWhatsAppUrlParams {
   telefoneWhatsapp: string
 }
 
+const currencyFormatter = new Intl.NumberFormat('pt-BR', {
+  currency: 'BRL',
+  style: 'currency',
+})
+
 function formatDate(data: string) {
   return new Intl.DateTimeFormat('pt-BR', {
     day: '2-digit',
@@ -40,6 +45,7 @@ export function buildWhatsAppMessage({
     `Nome: ${nomeCliente}`,
     `Telefone: ${telefoneCliente}`,
     `Servico: ${servico.nome}`,
+    `Preco: ${currencyFormatter.format(servico.preco)}`,
     `Barbeiro: ${barbeiro.nome}`,
     `Data: ${formatDate(data)}`,
     `Horario: ${horario}`,
