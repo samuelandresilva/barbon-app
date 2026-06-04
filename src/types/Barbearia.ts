@@ -5,4 +5,5 @@ export interface Barbearia {
   instagram: string
   logoUrl: string
   descricao?: string
+  funcionamento?: string
 }

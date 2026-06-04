@@ -4,7 +4,7 @@ import { getInitials } from '../../utils/getInitials'
 import { hasValidImageUrl } from '../../utils/hasValidImageUrl'
 import { createGoogleMapsHref, createInstagramHref, createPhoneHref } from '../../utils/linkUtils'
 import { FaInstagram } from "react-icons/fa"
-import { FaPhone, FaLocationDot } from "react-icons/fa6"
+import { FaClock, FaPhone, FaLocationDot } from "react-icons/fa6"
 
 interface BarbeariaCardProps {
   barbearia: Barbearia
@@ -120,6 +120,22 @@ export function BarbeariaCard({ barbearia }: BarbeariaCardProps) {
               </dd>
             </div>
           </div>
+
+          {barbearia.funcionamento ? (
+            <div className="flex items-start gap-3">
+              <div className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-lg bg-amber-950/40 text-amber-400">
+                <FaClock className="size-4 text-amber-400" />
+              </div>
+              <div className="min-w-0">
+                <dt className="text-[11px] font-bold uppercase tracking-widest text-stone-500">
+                  Funcionamento
+                </dt>
+                <dd className="mt-0.5 whitespace-pre-line text-sm font-semibold leading-5 text-stone-100">
+                  {barbearia.funcionamento}
+                </dd>
+              </div>
+            </div>
+          ) : null}
         </dl>
       </div >
     </section >

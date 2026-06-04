@@ -149,6 +149,7 @@ function mapBarbearia(row: SheetRow): Barbearia {
     instagram: row.instagram,
     logoUrl: row.logo_url,
     descricao: row.descricao || undefined,
+    funcionamento: row.funcionamento || undefined,
   }
 }
 
