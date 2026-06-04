@@ -6,6 +6,7 @@ import { HomePage } from '../pages/HomePage'
 import { ReviewPage } from '../pages/ReviewPage'
 import { ServicePage } from '../pages/ServicePage'
 import { TimePage } from '../pages/TimePage'
+import { WhatsAppRedirectPage } from '../pages/WhatsAppRedirectPage'
 
 export function AppRoutes() {
   return (
@@ -17,6 +18,7 @@ export function AppRoutes() {
       <Route path="/horarios" element={<TimePage />} />
       <Route path="/cliente" element={<CustomerPage />} />
       <Route path="/revisao" element={<ReviewPage />} />
+      <Route path="/whatsapp" element={<WhatsAppRedirectPage />} />
     </Routes>
   )
 }

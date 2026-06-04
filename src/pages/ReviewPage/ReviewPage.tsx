@@ -143,6 +143,7 @@ export function ReviewPage() {
     })
 
     openWhatsAppUrl(whatsappUrl)
+    navigate('/whatsapp')
   }
 
   return (
