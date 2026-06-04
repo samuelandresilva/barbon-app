@@ -39,7 +39,7 @@ export function ServicePage() {
         }
       } catch {
         if (isMounted) {
-          setErrorMessage('Nao foi possivel carregar os servicos disponiveis.')
+          setErrorMessage('Não foi possível carregar os serviços disponíveis.')
         }
       } finally {
         if (isMounted) {
@@ -66,7 +66,7 @@ export function ServicePage() {
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <p className="rounded-md border border-stone-800 bg-stone-900 p-4 text-sm text-stone-300">
-            Carregando informacoes...
+            Carregando informações...
           </p>
         </main>
       </div>
@@ -79,7 +79,7 @@ export function ServicePage() {
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <p className="rounded-md border border-red-900/60 bg-red-950/30 p-4 text-sm text-red-100">
-            {errorMessage || 'Nao foi possivel carregar os servicos disponiveis.'}
+            {errorMessage || 'Não foi possível carregar os serviços disponíveis.'}
           </p>
         </main>
       </div>
@@ -91,10 +91,10 @@ export function ServicePage() {
       <div className="flex flex-col gap-5">
         <div>
           <h1 className="text-2xl font-semibold text-stone-50">
-            Escolha o servico
+            Escolha o serviço
           </h1>
           <p className="mt-2 text-sm leading-6 text-stone-300">
-            Selecione uma opcao para continuar.
+            Selecione uma opção para continuar.
           </p>
         </div>
 

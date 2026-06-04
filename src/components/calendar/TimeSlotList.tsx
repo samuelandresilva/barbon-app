@@ -14,7 +14,7 @@ export function TimeSlotList({
   if (horarios.length === 0) {
     return (
       <p className="rounded-md border border-stone-800 bg-stone-900 p-4 text-sm text-stone-300">
-        Nenhum horario disponivel para esta data.
+        Nenhum horário disponível para esta data.
       </p>
     )
   }

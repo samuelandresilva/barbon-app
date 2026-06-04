@@ -27,7 +27,7 @@ export function WhatsAppRedirectPage() {
       } catch {
         if (isMounted) {
           setErrorMessage(
-            'Nao foi possivel carregar as informacoes da barbearia.',
+            'Não foi possível carregar as informações do estabelecimento.',
           )
         }
       } finally {
@@ -55,7 +55,7 @@ export function WhatsAppRedirectPage() {
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <p className="rounded-md border border-stone-800 bg-stone-900 p-4 text-sm text-stone-300">
-            Carregando informacoes...
+            Carregando informações...
           </p>
         </main>
       </div>
@@ -69,7 +69,7 @@ export function WhatsAppRedirectPage() {
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <p className="rounded-md border border-red-900/60 bg-red-950/30 p-4 text-sm text-red-100">
             {errorMessage ||
-              'Nao foi possivel carregar as informacoes da barbearia.'}
+              'Não foi possível carregar as informações do estabelecimento.'}
           </p>
         </main>
       </div>
@@ -81,14 +81,14 @@ export function WhatsAppRedirectPage() {
       <div className="flex min-h-72 flex-col justify-center gap-5">
         <div className="rounded-md border border-amber-400/40 bg-amber-400/10 p-5">
           <p className="text-sm font-bold uppercase text-amber-300">
-            Solicitacao enviada
+            Solicitação enviada
           </p>
           <h1 className="mt-2 text-2xl font-bold text-stone-50">
-            Voce foi redirecionado para o WhatsApp.
+            Você foi redirecionado para o WhatsApp.
           </h1>
           <p className="mt-3 text-sm leading-6 text-stone-300">
-            Sua solicitacao foi preparada para envio. A confirmacao do
-            agendamento sera feita manualmente pela equipe da barbearia.
+            Sua solicitação foi preparada para envio. A confirmação do
+            agendamento será feita manualmente pela equipe {barbearia?.nome}.
           </p>
         </div>
 

@@ -40,17 +40,17 @@ export function buildWhatsAppMessage({
   telefoneCliente,
 }: BuildWhatsAppMessageParams) {
   return [
-    'Ola, gostaria de solicitar um agendamento.',
+    'Olá, gostaria de solicitar um agendamento.',
     '',
     `Nome: ${nomeCliente}`,
     `Telefone: ${telefoneCliente}`,
-    `Servico: ${servico.nome}`,
-    `Preco: ${currencyFormatter.format(servico.preco)}`,
-    `Barbeiro: ${barbeiro.nome}`,
+    `Serviço: ${servico.nome}`,
+    `Preço: ${currencyFormatter.format(servico.preco)}`,
+    `Profissional: ${barbeiro.nome}`,
     `Data: ${formatDate(data)}`,
-    `Horario: ${horario}`,
+    `Horário: ${horario}`,
     '',
-    'Entendo que o agendamento sera confirmado manualmente pela equipe.',
+    'Entendo que o agendamento será confirmado manualmente pela equipe.',
   ].join('\n')
 }
 

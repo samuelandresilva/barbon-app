@@ -112,7 +112,7 @@ async function fetchSheetRows(sheetName: GoogleSheetName): Promise<SheetRow[]> {
 
     return parseSheetRows(csv)
   } catch {
-    throw new Error('Nao foi possivel carregar os dados da planilha.')
+    throw new Error('Não foi possível carregar os dados da planilha.')
   }
 }
 
@@ -196,12 +196,12 @@ export async function getBarbearia(): Promise<Barbearia> {
     const [barbeariaRow] = await getSheetRows('barbearia')
 
     if (!barbeariaRow) {
-      throw new Error('Dados da barbearia nao encontrados.')
+      throw new Error('Dados da barbearia não encontrados.')
     }
 
     return mapBarbearia(barbeariaRow)
   } catch {
-    throw new Error('Nao foi possivel carregar as informacoes da barbearia.')
+    throw new Error('Não foi possível carregar as informações do estabelecimento.')
   }
 }
 
@@ -211,7 +211,7 @@ export async function getServicos(): Promise<Servico[]> {
 
     return rows.map(mapServico).filter((servico) => servico.ativo)
   } catch {
-    throw new Error('Nao foi possivel carregar os servicos disponiveis.')
+    throw new Error('Não foi possível carregar os serviços disponíveis.')
   }
 }
 
@@ -221,7 +221,7 @@ export async function getBarbeiros(): Promise<Barbeiro[]> {
 
     return rows.map(mapBarbeiro).filter((barbeiro) => barbeiro.ativo)
   } catch {
-    throw new Error('Nao foi possivel carregar os barbeiros disponiveis.')
+    throw new Error('Não foi possível carregar os profissionais disponíveis.')
   }
 }
 
@@ -231,7 +231,7 @@ export async function getBarbeiroServicos(): Promise<BarbeiroServico[]> {
 
     return rows.map(mapBarbeiroServico)
   } catch {
-    throw new Error('Nao foi possivel carregar os vinculos de servicos.')
+    throw new Error('Não foi possível carregar os vínculos de serviços.')
   }
 }
 
@@ -241,7 +241,7 @@ export async function getAgendas(): Promise<AgendaBarbeiro[]> {
 
     return rows.map(mapAgenda).filter((agenda) => agenda.ativo)
   } catch {
-    throw new Error('Nao foi possivel carregar as agendas dos barbeiros.')
+    throw new Error('Não foi possível carregar as agendas dos profissionais.')
   }
 }
 
@@ -264,6 +264,6 @@ export async function getGoogleSheetsData(): Promise<GoogleSheetsData> {
       agendas,
     }
   } catch {
-    throw new Error('Nao foi possivel carregar os dados da planilha.')
+    throw new Error('Não foi possível carregar os dados da planilha.')
   }
 }

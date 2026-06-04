@@ -25,7 +25,7 @@ export function HomePage() {
       } catch {
         if (isMounted) {
           setErrorMessage(
-            'Nao foi possivel carregar as informacoes da barbearia.',
+            'Não foi possível carregar as informações do estabelecimento.',
           )
         }
       } finally {
@@ -48,7 +48,7 @@ export function HomePage() {
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <p className="rounded-md border border-stone-800 bg-stone-900 p-4 text-sm text-stone-300">
-            Carregando informacoes...
+            Carregando informações...
           </p>
         </main>
       </div>
@@ -63,7 +63,7 @@ export function HomePage() {
           <div className="rounded-md border border-red-900/60 bg-red-950/30 p-4">
             <p className="text-sm text-red-100">
               {errorMessage ||
-                'Nao foi possivel carregar as informacoes da barbearia.'}
+                'Não foi possível carregar as informações do estabelecimento.'}
             </p>
             <button
               type="button"
@@ -86,11 +86,11 @@ export function HomePage() {
             Agendamento
           </p>
           <h1 className="mt-2 max-w-3xl text-3xl font-bold text-stone-50 sm:text-4xl">
-            Escolha seu horario com praticidade.
+            Escolha seu horário com praticidade.
           </h1>
           <p className="mt-3 max-w-2xl text-base leading-7 text-stone-300">
-            Consulte servicos, barbeiros e horarios disponiveis antes de enviar
-            sua solicitacao para a barbearia.
+            Consulte serviços, profissionais e horários disponíveis antes de enviar
+            sua solicitação para o estabelecimento.
           </p>
         </div>
 
@@ -100,7 +100,7 @@ export function HomePage() {
             className="min-h-12 rounded-md bg-amber-400 px-5 text-sm font-bold text-stone-950 shadow-lg shadow-amber-950/20 transition hover:bg-amber-300"
             onClick={() => navigate('/servicos')}
           >
-            Agendar Horario
+            Agendar Horário
           </button>
         </div>
       </div>

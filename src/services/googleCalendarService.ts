@@ -27,7 +27,7 @@ function getCalendarApiKey() {
   const apiKey = import.meta.env.VITE_GOOGLE_CALENDAR_API_KEY
 
   if (!apiKey) {
-    throw new Error('Google Calendar API nao configurada.')
+    throw new Error('Google Calendar API não configurada.')
   }
 
   return apiKey
@@ -111,6 +111,6 @@ export async function getEventosOcupados({
       return busyPeriod ? [busyPeriod] : []
     })
   } catch {
-    throw new Error('Nao foi possivel consultar a disponibilidade do barbeiro.')
+    throw new Error('Não foi possível consultar a disponibilidade do profissional.')
   }
 }

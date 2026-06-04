@@ -49,7 +49,7 @@ export function BarberPage() {
         }
       } catch {
         if (isMounted) {
-          setErrorMessage('Nao foi possivel carregar os barbeiros disponiveis.')
+          setErrorMessage('Não foi possível carregar os profissionais disponíveis.')
         }
       } finally {
         if (isMounted) {
@@ -90,14 +90,14 @@ export function BarberPage() {
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <div className="rounded-md border border-stone-800 bg-stone-900 p-4">
             <p className="text-sm text-stone-300">
-              Selecione um servico antes de escolher o barbeiro.
+              Selecione um serviço antes de escolher o profissional.
             </p>
             <button
               type="button"
               className="mt-4 min-h-11 rounded bg-amber-400 px-4 text-sm font-semibold text-stone-950"
               onClick={() => navigate('/servicos')}
             >
-              Escolher servico
+              Escolher serviço
             </button>
           </div>
         </main>
@@ -111,7 +111,7 @@ export function BarberPage() {
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <p className="rounded-md border border-stone-800 bg-stone-900 p-4 text-sm text-stone-300">
-            Carregando informacoes...
+            Carregando informações...
           </p>
         </main>
       </div>
@@ -124,7 +124,7 @@ export function BarberPage() {
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <p className="rounded-md border border-red-900/60 bg-red-950/30 p-4 text-sm text-red-100">
-            {errorMessage || 'Nao foi possivel carregar os barbeiros disponiveis.'}
+            {errorMessage || 'Não foi possível carregar os profissionais disponíveis.'}
           </p>
         </main>
       </div>
@@ -136,7 +136,7 @@ export function BarberPage() {
       <div className="flex flex-col gap-5">
         <div>
           <h1 className="text-2xl font-semibold text-stone-50">
-            Escolha o barbeiro
+            Escolha o profissional
           </h1>
           <p className="mt-2 text-sm leading-6 text-stone-300">
             Exibindo profissionais que realizam {servicoSelecionado.nome}.

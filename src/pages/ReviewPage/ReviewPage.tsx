@@ -52,7 +52,7 @@ export function ReviewPage() {
       } catch {
         if (isMounted) {
           setErrorMessage(
-            'Nao foi possivel carregar as informacoes da barbearia.',
+            'Não foi possível carregar as informações do estabelecimento.',
           )
         }
       } finally {
@@ -83,7 +83,7 @@ export function ReviewPage() {
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <div className="rounded-md border border-stone-800 bg-stone-900 p-4">
             <p className="text-sm text-stone-300">
-              Complete as etapas anteriores antes de revisar a solicitacao.
+              Complete as etapas anteriores antes de revisar a solicitação.
             </p>
             <button
               type="button"
@@ -104,7 +104,7 @@ export function ReviewPage() {
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <p className="rounded-md border border-stone-800 bg-stone-900 p-4 text-sm text-stone-300">
-            Carregando informacoes...
+            Carregando informações...
           </p>
         </main>
       </div>
@@ -118,7 +118,7 @@ export function ReviewPage() {
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <p className="rounded-md border border-red-900/60 bg-red-950/30 p-4 text-sm text-red-100">
             {errorMessage ||
-              'Nao foi possivel carregar as informacoes da barbearia.'}
+              'Não foi possível carregar as informações do estabelecimento.'}
           </p>
         </main>
       </div>
@@ -151,17 +151,17 @@ export function ReviewPage() {
       <div className="flex flex-col gap-5">
         <div>
           <h1 className="text-2xl font-semibold text-stone-50">
-            Revise sua solicitacao
+            Revise sua solicitação
           </h1>
           <p className="mt-2 text-sm leading-6 text-stone-300">
-            Confira os dados antes de enviar para a barbearia.
+            Confira os dados antes de enviar.
           </p>
         </div>
 
         <dl className="grid gap-3">
           <div className="rounded-md border border-stone-800 bg-stone-900/90 p-4 shadow-sm shadow-black/20">
             <dt className="text-xs font-semibold uppercase text-stone-500">
-              Servico
+              Serviço
             </dt>
             <dd className="mt-2 text-base font-semibold text-stone-50">
               {servicoSelecionado.nome}
@@ -174,7 +174,7 @@ export function ReviewPage() {
 
           <div className="rounded-md border border-stone-800 bg-stone-900/90 p-4 shadow-sm shadow-black/20">
             <dt className="text-xs font-semibold uppercase text-stone-500">
-              Barbeiro
+              Profissional
             </dt>
             <dd className="mt-2 text-base font-semibold text-stone-50">
               {barbeiroSelecionado.nome}
@@ -193,7 +193,7 @@ export function ReviewPage() {
 
             <div className="rounded-md border border-stone-800 bg-stone-900/90 p-4 shadow-sm shadow-black/20">
               <dt className="text-xs font-semibold uppercase text-stone-500">
-                Horario
+                Horário
               </dt>
               <dd className="mt-2 text-base font-semibold text-stone-50">
                 {horario}
@@ -213,8 +213,8 @@ export function ReviewPage() {
         </dl>
 
         <p className="rounded-md border border-amber-400/40 bg-amber-400/10 p-4 text-sm leading-6 text-amber-100">
-          Sua solicitacao sera enviada para a barbearia. O agendamento sera
-          confirmado manualmente pela equipe.
+          Sua solicitação será enviada para o estabelecimento. 
+          O agendamento será confirmado manualmente pela equipe.
         </p>
 
         <div className="flex justify-between gap-3">

@@ -11,7 +11,7 @@ export function HeaderOakbeard() {
         <div className="min-w-0">
           <p className="text-xl font-bold text-stone-50">Oakbeard.app</p>
           <p className="mt-1 text-sm leading-5 text-stone-400">
-            Seu horario, sua barba, sem complicacao.
+            Seu horário, sua barba e cabelo, sem complicação.
           </p>
         </div>
       </div>

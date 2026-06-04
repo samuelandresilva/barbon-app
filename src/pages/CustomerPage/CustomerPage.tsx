@@ -64,7 +64,7 @@ export function CustomerPage() {
       } catch {
         if (isMounted) {
           setErrorMessage(
-            'Nao foi possivel carregar as informacoes da barbearia.',
+            'Não foi possível carregar as informações do estabelecimento.',
           )
         }
       } finally {
@@ -117,7 +117,7 @@ export function CustomerPage() {
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <p className="rounded-md border border-stone-800 bg-stone-900 p-4 text-sm text-stone-300">
-            Carregando informacoes...
+            Carregando informações...
           </p>
         </main>
       </div>
@@ -131,7 +131,7 @@ export function CustomerPage() {
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <p className="rounded-md border border-red-900/60 bg-red-950/30 p-4 text-sm text-red-100">
             {errorMessage ||
-              'Nao foi possivel carregar as informacoes da barbearia.'}
+              'Não foi possível carregar as informações do estabelecimento.'}
           </p>
         </main>
       </div>
@@ -146,7 +146,7 @@ export function CustomerPage() {
             Informe seus dados
           </h1>
           <p className="mt-2 text-sm leading-6 text-stone-300">
-            A barbearia usara essas informacoes para confirmar a solicitacao.
+            Usaremos essas informações para confirmar a solicitação.
           </p>
         </div>
 

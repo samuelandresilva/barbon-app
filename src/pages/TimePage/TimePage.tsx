@@ -49,7 +49,7 @@ export function TimePage() {
         )
 
         if (!agenda) {
-          throw new Error('Agenda do barbeiro nao encontrada.')
+          throw new Error('Agenda do profissional não encontrada.')
         }
 
         const eventosOcupados = await getEventosOcupados({
@@ -70,7 +70,7 @@ export function TimePage() {
       } catch {
         if (isMounted) {
           setErrorMessage(
-            'Nao foi possivel carregar os horarios disponiveis.',
+            'Não foi possível carregar os horários disponíveis.',
           )
         }
       } finally {
@@ -98,7 +98,7 @@ export function TimePage() {
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <div className="rounded-md border border-stone-800 bg-stone-900 p-4">
             <p className="text-sm text-stone-300">
-              Selecione servico, barbeiro e data antes de escolher o horario.
+              Selecione serviço, profissional e data antes de escolher o horário.
             </p>
             <button
               type="button"
@@ -119,7 +119,7 @@ export function TimePage() {
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <p className="rounded-md border border-stone-800 bg-stone-900 p-4 text-sm text-stone-300">
-            Carregando horarios disponiveis...
+            Carregando horários disponíveis...
           </p>
         </main>
       </div>
@@ -132,7 +132,7 @@ export function TimePage() {
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <p className="rounded-md border border-red-900/60 bg-red-950/30 p-4 text-sm text-red-100">
-            {errorMessage || 'Nao foi possivel carregar os horarios.'}
+            {errorMessage || 'Não foi possível carregar os horários disponíveis.'}
           </p>
         </main>
       </div>
@@ -144,10 +144,10 @@ export function TimePage() {
       <div className="flex flex-col gap-5">
         <div>
           <h1 className="text-2xl font-semibold text-stone-50">
-            Escolha o horario
+            Escolha o horário
           </h1>
           <p className="mt-2 text-sm leading-6 text-stone-300">
-            Horarios ocupados sao removidos automaticamente da lista.
+            Selecione um horário para continuar.
           </p>
         </div>
 
