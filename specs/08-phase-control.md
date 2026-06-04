@@ -576,7 +576,42 @@
 - A rota /cliente foi conectada ao fluxo e o botao Continuar aponta para /revisao, que sera implementada na Fase 14.
 - O build e o lint foram executados com sucesso.
 
-- [ ] Fase 14 - Revisão
+- [x] Fase 14 - Revisão
+
+## Log - Fase 14 - Revisão
+
+### Data da conclusao
+
+2026-06-04
+
+### Arquivos criados
+
+- src/pages/ReviewPage/ReviewPage.tsx
+- src/pages/ReviewPage/index.ts
+
+### Arquivos alterados
+
+- src/routes/AppRoutes.tsx
+- specs/08-phase-control.md
+
+### Comandos executados
+
+- Get-Content specs/08-phase-control.md
+- git status --short
+- Get-Content src\pages\CustomerPage\CustomerPage.tsx
+- npm run build
+- npm run lint
+- Remove-Item -LiteralPath .\dist -Recurse -Force
+
+### Observacoes importantes
+
+- A ultima fase concluida antes desta implementacao era a Fase 13 - Dados do Cliente.
+- Foi criada a ReviewPage exibindo servico, preco, duracao, barbeiro, data, horario, nome e telefone do cliente.
+- A tela exibe o aviso de que a solicitacao sera enviada para a barbearia e confirmada manualmente pela equipe.
+- A rota /revisao foi conectada ao fluxo.
+- A geracao da URL e abertura do WhatsApp permanecem para a Fase 15.
+- O build e o lint foram executados com sucesso.
+
 - [ ] Fase 15 - WhatsApp
 - [ ] Fase 16 - Fluxo Completo
 - [ ] Fase 17 - Integração Real Google Sheets

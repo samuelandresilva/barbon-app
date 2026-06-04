@@ -1,0 +1,213 @@
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { AppLayout, HeaderOakbeard } from '../../components/layout'
+import { useBooking } from '../../contexts'
+import { getBarbearia } from '../../services/googleSheetsService'
+import type { Barbearia } from '../../types'
+
+const currencyFormatter = new Intl.NumberFormat('pt-BR', {
+  currency: 'BRL',
+  style: 'currency',
+})
+
+function formatDate(data: string) {
+  return new Intl.DateTimeFormat('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  }).format(new Date(`${data}T00:00:00`))
+}
+
+export function ReviewPage() {
+  const navigate = useNavigate()
+  const {
+    barbeiroSelecionado,
+    data,
+    horario,
+    nomeCliente,
+    servicoSelecionado,
+    telefoneCliente,
+  } = useBooking()
+  const [barbearia, setBarbearia] = useState<Barbearia | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [errorMessage, setErrorMessage] = useState('')
+
+  useEffect(() => {
+    let isMounted = true
+
+    async function loadBarbearia() {
+      try {
+        setIsLoading(true)
+        setErrorMessage('')
+        const loadedBarbearia = await getBarbearia()
+
+        if (isMounted) {
+          setBarbearia(loadedBarbearia)
+        }
+      } catch {
+        if (isMounted) {
+          setErrorMessage(
+            'Nao foi possivel carregar as informacoes da barbearia.',
+          )
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoading(false)
+        }
+      }
+    }
+
+    void loadBarbearia()
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
+  if (
+    !servicoSelecionado ||
+    !barbeiroSelecionado ||
+    !data ||
+    !horario ||
+    !nomeCliente ||
+    !telefoneCliente
+  ) {
+    return (
+      <div className="min-h-dvh bg-stone-950 text-stone-100">
+        <HeaderOakbeard />
+        <main className="mx-auto w-full max-w-5xl px-5 py-8">
+          <div className="rounded-md border border-stone-800 bg-stone-900 p-4">
+            <p className="text-sm text-stone-300">
+              Complete as etapas anteriores antes de revisar a solicitacao.
+            </p>
+            <button
+              type="button"
+              className="mt-4 min-h-11 rounded bg-amber-400 px-4 text-sm font-semibold text-stone-950"
+              onClick={() => navigate('/servicos')}
+            >
+              Voltar ao inicio do fluxo
+            </button>
+          </div>
+        </main>
+      </div>
+    )
+  }
+
+  if (isLoading) {
+    return (
+      <div className="min-h-dvh bg-stone-950 text-stone-100">
+        <HeaderOakbeard />
+        <main className="mx-auto w-full max-w-5xl px-5 py-8">
+          <p className="rounded-md border border-stone-800 bg-stone-900 p-4 text-sm text-stone-300">
+            Carregando informacoes...
+          </p>
+        </main>
+      </div>
+    )
+  }
+
+  if (errorMessage || !barbearia) {
+    return (
+      <div className="min-h-dvh bg-stone-950 text-stone-100">
+        <HeaderOakbeard />
+        <main className="mx-auto w-full max-w-5xl px-5 py-8">
+          <p className="rounded-md border border-red-900/60 bg-red-950/30 p-4 text-sm text-red-100">
+            {errorMessage ||
+              'Nao foi possivel carregar as informacoes da barbearia.'}
+          </p>
+        </main>
+      </div>
+    )
+  }
+
+  return (
+    <AppLayout barbearia={barbearia} currentStep="revisao">
+      <div className="flex flex-col gap-5">
+        <div>
+          <h1 className="text-2xl font-semibold text-stone-50">
+            Revise sua solicitacao
+          </h1>
+          <p className="mt-2 text-sm leading-6 text-stone-300">
+            Confira os dados antes de enviar para a barbearia.
+          </p>
+        </div>
+
+        <dl className="grid gap-3">
+          <div className="rounded-md border border-stone-800 bg-stone-900 p-4">
+            <dt className="text-xs font-semibold uppercase tracking-wide text-stone-500">
+              Servico
+            </dt>
+            <dd className="mt-2 text-base font-semibold text-stone-50">
+              {servicoSelecionado.nome}
+            </dd>
+            <dd className="mt-1 text-sm text-stone-300">
+              {currencyFormatter.format(servicoSelecionado.preco)} -{' '}
+              {servicoSelecionado.duracaoMinutos} min
+            </dd>
+          </div>
+
+          <div className="rounded-md border border-stone-800 bg-stone-900 p-4">
+            <dt className="text-xs font-semibold uppercase tracking-wide text-stone-500">
+              Barbeiro
+            </dt>
+            <dd className="mt-2 text-base font-semibold text-stone-50">
+              {barbeiroSelecionado.nome}
+            </dd>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div className="rounded-md border border-stone-800 bg-stone-900 p-4">
+              <dt className="text-xs font-semibold uppercase tracking-wide text-stone-500">
+                Data
+              </dt>
+              <dd className="mt-2 text-base font-semibold text-stone-50">
+                {formatDate(data)}
+              </dd>
+            </div>
+
+            <div className="rounded-md border border-stone-800 bg-stone-900 p-4">
+              <dt className="text-xs font-semibold uppercase tracking-wide text-stone-500">
+                Horario
+              </dt>
+              <dd className="mt-2 text-base font-semibold text-stone-50">
+                {horario}
+              </dd>
+            </div>
+          </div>
+
+          <div className="rounded-md border border-stone-800 bg-stone-900 p-4">
+            <dt className="text-xs font-semibold uppercase tracking-wide text-stone-500">
+              Cliente
+            </dt>
+            <dd className="mt-2 text-base font-semibold text-stone-50">
+              {nomeCliente}
+            </dd>
+            <dd className="mt-1 text-sm text-stone-300">{telefoneCliente}</dd>
+          </div>
+        </dl>
+
+        <p className="rounded-md border border-amber-400/40 bg-amber-400/10 p-4 text-sm leading-6 text-amber-100">
+          Sua solicitacao sera enviada para a barbearia. O agendamento sera
+          confirmado manualmente pela equipe.
+        </p>
+
+        <div className="flex justify-between gap-3">
+          <button
+            type="button"
+            className="min-h-12 rounded border border-stone-700 px-5 text-sm font-semibold text-stone-200"
+            onClick={() => navigate('/cliente')}
+          >
+            Voltar
+          </button>
+          <button
+            type="button"
+            className="min-h-12 rounded bg-stone-700 px-5 text-sm font-semibold text-stone-400"
+            disabled
+          >
+            Solicitar Agendamento
+          </button>
+        </div>
+      </div>
+    </AppLayout>
+  )
+}
