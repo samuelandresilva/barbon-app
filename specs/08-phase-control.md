@@ -539,7 +539,43 @@
 - A rota /horarios foi conectada ao fluxo e o botao Continuar aponta para /cliente, que sera implementada na Fase 13.
 - O build e o lint foram executados com sucesso.
 
-- [ ] Fase 13 - Dados do Cliente
+- [x] Fase 13 - Dados do Cliente
+
+## Log - Fase 13 - Dados do Cliente
+
+### Data da conclusao
+
+2026-06-04
+
+### Arquivos criados
+
+- src/pages/CustomerPage/CustomerPage.tsx
+- src/pages/CustomerPage/index.ts
+
+### Arquivos alterados
+
+- src/routes/AppRoutes.tsx
+- specs/08-phase-control.md
+
+### Comandos executados
+
+- Get-Content specs/08-phase-control.md
+- git status --short
+- Get-Content src\pages\ServicePage\ServicePage.tsx
+- npm run build
+- npm run lint
+- Remove-Item -LiteralPath .\dist -Recurse -Force
+
+### Observacoes importantes
+
+- A ultima fase concluida antes desta implementacao era a Fase 12 - Selecao de Horario.
+- Foi criada a CustomerPage com campos de nome e telefone.
+- O nome exige pelo menos 3 caracteres.
+- O telefone recebe mascara e valida o formato (11) 99999-9999.
+- Os dados do cliente sao salvos no BookingContext.
+- A rota /cliente foi conectada ao fluxo e o botao Continuar aponta para /revisao, que sera implementada na Fase 14.
+- O build e o lint foram executados com sucesso.
+
 - [ ] Fase 14 - Revisão
 - [ ] Fase 15 - WhatsApp
 - [ ] Fase 16 - Fluxo Completo
