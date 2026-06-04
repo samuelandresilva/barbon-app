@@ -453,7 +453,44 @@
 - Nao foi implementada a regra generateAvailableSlots() da Fase 11.
 - O build e o lint foram executados com sucesso.
 
-- [ ] Fase 11 - Regra de Disponibilidade
+- [x] Fase 11 - Regra de Disponibilidade
+
+## Log - Fase 11 - Regra de Disponibilidade
+
+### Data da conclusao
+
+2026-06-04
+
+### Arquivos criados
+
+- src/domain/rules/generateAvailableSlots.ts
+- src/domain/rules/index.ts
+
+### Arquivos alterados
+
+- specs/08-phase-control.md
+
+### Comandos executados
+
+- Get-Content specs/08-phase-control.md
+- Get-Content specs/03-data-model.md
+- Get-Content specs/04-technical-architecture.md
+- Get-Content specs/06-implementation-rules.md
+- Get-Content specs/07-implementation-plan.md
+- rg --files src
+- git status --short
+- npm run build
+- npm run lint
+- Remove-Item -LiteralPath .\dist -Recurse -Force
+
+### Observacoes importantes
+
+- A ultima fase concluida antes desta implementacao era a Fase 10 - Google Calendar Mock.
+- A regra generateAvailableSlots() foi criada em src/domain/rules.
+- A regra gera blocos dentro da janela de atendimento, respeita duracao do servico, intervalo da agenda e remove conflitos com eventos ocupados.
+- Nao foi implementada a TimePage da Fase 12.
+- O build e o lint foram executados com sucesso.
+
 - [ ] Fase 12 - Seleção de Horário
 - [ ] Fase 13 - Dados do Cliente
 - [ ] Fase 14 - Revisão
