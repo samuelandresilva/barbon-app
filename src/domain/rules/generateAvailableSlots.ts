@@ -29,6 +29,20 @@ function buildDateTime(data: string, timeInMinutes: number) {
   return new Date(`${data}T${formatMinutesToTime(timeInMinutes)}:00`)
 }
 
+function formatDateToIso(date: Date) {
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+
+  return `${year}-${month}-${day}`
+}
+
+function isSlotBeforeNow(slotStart: Date, data: string) {
+  const now = new Date()
+
+  return data === formatDateToIso(now) && slotStart < now
+}
+
 function hasEventConflict(
   slotStart: Date,
   slotEnd: Date,
@@ -57,7 +71,10 @@ export function generateAvailableSlots({
     const slotStart = buildDateTime(data, currentMinutes)
     const slotEnd = buildDateTime(data, currentMinutes + servico.duracaoMinutos)
 
-    if (!hasEventConflict(slotStart, slotEnd, eventosOcupados)) {
+    if (
+      !isSlotBeforeNow(slotStart, data) &&
+      !hasEventConflict(slotStart, slotEnd, eventosOcupados)
+    ) {
       availableSlots.push({
         data,
         horario: formatMinutesToTime(currentMinutes),
