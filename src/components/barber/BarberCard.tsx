@@ -19,8 +19,8 @@ export function BarberCard({
       className={[
         'flex w-full items-center gap-4 rounded-md border p-4 text-left shadow-sm transition',
         isSelected
-          ? 'border-amber-400 bg-amber-400 text-stone-950 shadow-amber-950/20'
-          : 'border-stone-800 bg-stone-900/90 text-stone-100 shadow-black/20 hover:border-amber-700 hover:bg-stone-900',
+          ? 'border-[#d88ca4] bg-[#d88ca4] text-white shadow-[#3f3437]/15'
+          : 'border-[#f3d4dc] bg-white text-[#3f3437] shadow-[#3f3437]/10 hover:border-[#d8a5b5] hover:bg-[#fff7f8]',
       ].join(' ')}
       onClick={() => onSelect(barbeiro)}
       aria-pressed={isSelected}
@@ -29,15 +29,15 @@ export function BarberCard({
         <img
           src={barbeiro.fotoUrl}
           alt={`Foto de ${barbeiro.nome}`}
-          className="size-16 shrink-0 rounded-md border border-amber-900/50 object-cover"
+          className="size-16 shrink-0 rounded-md border border-[#f3d4dc] object-cover"
         />
       ) : (
         <span
           className={[
             'grid size-16 shrink-0 place-items-center rounded-md border text-lg font-bold',
             isSelected
-              ? 'border-stone-800 bg-stone-950 text-amber-300'
-              : 'border-stone-700 bg-stone-950 text-amber-300',
+              ? 'border-[#f8e7ed] bg-white text-[#c97891]'
+              : 'border-[#f3d4dc] bg-[#fff7f8] text-[#c97891]',
           ].join(' ')}
           aria-hidden="true"
         >
@@ -50,7 +50,7 @@ export function BarberCard({
         <span
           className={[
             'mt-1 block text-sm leading-6',
-            isSelected ? 'text-stone-900' : 'text-stone-300',
+            isSelected ? 'text-[#fff7f8]' : 'text-[#7b666d]',
           ].join(' ')}
         >
           {barbeiro.descricao}

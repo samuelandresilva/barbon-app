@@ -77,10 +77,10 @@ export function ServicePage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-dvh bg-stone-950 text-stone-100">
+      <div className="min-h-dvh bg-transparent text-[#3f3437]">
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
-          <p className="rounded-md border border-stone-800 bg-stone-900 p-4 text-sm text-stone-300">
+          <p className="rounded-md border border-[#f3d4dc] bg-white p-4 text-sm text-[#7b666d]">
             Carregando informações...
           </p>
         </main>
@@ -90,10 +90,10 @@ export function ServicePage() {
 
   if (errorMessage || !barbearia) {
     return (
-      <div className="min-h-dvh bg-stone-950 text-stone-100">
+      <div className="min-h-dvh bg-transparent text-[#3f3437]">
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
-          <p className="rounded-md border border-red-900/60 bg-red-950/30 p-4 text-sm text-red-100">
+          <p className="rounded-md border border-[#f0c8cf] bg-[#fff5f6] p-4 text-sm text-[#9f5d68]">
             {errorMessage || 'Não foi possível carregar os serviços disponíveis.'}
           </p>
         </main>
@@ -105,21 +105,21 @@ export function ServicePage() {
     <AppLayout barbearia={barbearia} currentStep="servico">
       <div className="flex flex-col gap-5">
         <div>
-          <h1 className="text-2xl font-semibold text-stone-50">
+          <h1 className="text-2xl font-semibold text-[#3f3437]">
             Escolha o serviço
           </h1>
-          <p className="mt-2 text-sm leading-6 text-stone-300">
+          <p className="mt-2 text-sm leading-6 text-[#7b666d]">
             Selecione uma opção para continuar.
           </p>
         </div>
 
         <label className="grid gap-2">
-          <span className="text-sm font-medium text-stone-200">
+          <span className="text-sm font-medium text-[#6f5a61]">
             Filtrar serviços
           </span>
           <input
             type="search"
-            className="min-h-12 rounded-md border border-stone-700 bg-stone-950/70 px-4 text-sm text-stone-50 outline-none shadow-inner shadow-black/20 transition focus:border-amber-400"
+            className="min-h-12 rounded-md border border-[#f3d4dc] bg-white px-4 text-sm text-[#3f3437] outline-none shadow-inner shadow-[#3f3437]/10 transition focus:border-[#d88ca4]"
             value={serviceFilter}
             onChange={(event) => setServiceFilter(event.target.value)}
             placeholder="Digite o nome do serviço"
@@ -138,7 +138,7 @@ export function ServicePage() {
         </div>
 
         {filteredServices.length === 0 ? (
-          <p className="rounded-md border border-stone-800 bg-stone-900/90 p-4 text-sm text-stone-300">
+          <p className="rounded-md border border-[#f3d4dc] bg-[#fff7f8] p-4 text-sm text-[#7b666d]">
             Nenhum serviço encontrado para o filtro informado.
           </p>
         ) : null}
@@ -146,7 +146,7 @@ export function ServicePage() {
         <div className="flex justify-end">
           <button
             type="button"
-            className="min-h-12 rounded-md bg-amber-400 px-5 text-sm font-bold text-stone-950 shadow-lg shadow-amber-950/20 transition enabled:hover:bg-amber-300 disabled:cursor-not-allowed disabled:bg-stone-700 disabled:text-stone-400 disabled:shadow-none"
+            className="min-h-12 rounded-md bg-[#d88ca4] px-5 text-sm font-bold text-white shadow-lg shadow-[#3f3437]/15 transition enabled:hover:bg-[#c97891] disabled:cursor-not-allowed disabled:bg-[#f8e7ed] disabled:text-[#cdb5bd] disabled:shadow-none"
             disabled={!servicoSelecionado}
             onClick={() => navigate('/barbeiros')}
           >

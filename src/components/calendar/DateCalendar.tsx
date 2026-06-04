@@ -85,31 +85,31 @@ export function DateCalendar({
   }
 
   return (
-    <div className="rounded-md border border-stone-800 bg-stone-900/90 p-3 shadow-sm shadow-black/20">
+    <div className="rounded-md border border-[#f3d4dc] bg-white p-3 shadow-sm shadow-[#3f3437]/10">
       <div className="mb-3 flex items-center justify-between gap-3">
         <button
           type="button"
-          className="min-h-10 rounded-md border border-stone-700 bg-stone-950/60 px-3 text-sm font-semibold text-stone-200 transition hover:border-amber-700 disabled:cursor-not-allowed disabled:opacity-30"
+          className="min-h-10 rounded-md border border-[#f3d4dc] bg-white px-3 text-sm font-semibold text-[#7b666d] transition hover:border-[#d8a5b5] disabled:cursor-not-allowed disabled:opacity-30"
           disabled={isPreviousMonthDisabled}
           onClick={handlePreviousMonth}
         >
           Anterior
         </button>
-        <p className="text-base font-semibold capitalize text-stone-50">
+        <p className="text-base font-semibold capitalize text-[#3f3437]">
           {monthLabel}
         </p>
         <button
           type="button"
-          className="min-h-10 rounded-md border border-stone-700 bg-stone-950/60 px-3 text-sm font-semibold text-stone-200 transition hover:border-amber-700"
+          className="min-h-10 rounded-md border border-[#f3d4dc] bg-white px-3 text-sm font-semibold text-[#7b666d] transition hover:border-[#d8a5b5]"
           onClick={handleNextMonth}
         >
-          Proximo
+          Próximo
         </button>
       </div>
 
       <div className="grid grid-cols-7 gap-1 text-center">
         {weekDays.map((weekDay) => (
-          <span key={weekDay} className="py-2 text-xs font-semibold text-stone-400">
+          <span key={weekDay} className="py-2 text-xs font-semibold text-[#b98a99]">
             {weekDay}
           </span>
         ))}
@@ -125,11 +125,11 @@ export function DateCalendar({
               className={[
                 'aspect-square rounded-md border text-sm font-semibold transition',
                 isSelected
-                  ? 'border-amber-400 bg-amber-400 text-stone-950'
-                  : 'border-stone-800 bg-stone-950 text-stone-100',
+                  ? 'border-[#d88ca4] bg-[#d88ca4] text-white'
+                  : 'border-[#f3d4dc] bg-white text-[#3f3437]',
                 isDisabled
                   ? 'cursor-not-allowed opacity-30'
-                  : 'hover:border-amber-700 hover:bg-stone-800',
+                  : 'hover:border-[#d8a5b5] hover:bg-[#fff7f8]',
               ].join(' ')}
               disabled={isDisabled}
               onClick={() => onSelectDate(calendarDay.isoDate)}

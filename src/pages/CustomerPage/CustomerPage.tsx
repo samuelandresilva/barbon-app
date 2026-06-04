@@ -91,19 +91,19 @@ export function CustomerPage() {
 
   if (!servicoSelecionado || !barbeiroSelecionado || !data || !horario) {
     return (
-      <div className="min-h-dvh bg-stone-950 text-stone-100">
+      <div className="min-h-dvh bg-transparent text-[#3f3437]">
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
-          <div className="rounded-md border border-stone-800 bg-stone-900 p-4">
-            <p className="text-sm text-stone-300">
+          <div className="rounded-md border border-[#f3d4dc] bg-white p-4">
+            <p className="text-sm text-[#7b666d]">
               Complete as etapas anteriores antes de informar seus dados.
             </p>
             <button
               type="button"
-              className="mt-4 min-h-11 rounded bg-amber-400 px-4 text-sm font-semibold text-stone-950"
+              className="mt-4 min-h-11 rounded bg-[#d88ca4] px-4 text-sm font-semibold text-white"
               onClick={() => navigate('/servicos')}
             >
-              Voltar ao inicio do fluxo
+              Voltar ao início do fluxo
             </button>
           </div>
         </main>
@@ -113,10 +113,10 @@ export function CustomerPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-dvh bg-stone-950 text-stone-100">
+      <div className="min-h-dvh bg-transparent text-[#3f3437]">
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
-          <p className="rounded-md border border-stone-800 bg-stone-900 p-4 text-sm text-stone-300">
+          <p className="rounded-md border border-[#f3d4dc] bg-white p-4 text-sm text-[#7b666d]">
             Carregando informações...
           </p>
         </main>
@@ -126,10 +126,10 @@ export function CustomerPage() {
 
   if (errorMessage || !barbearia) {
     return (
-      <div className="min-h-dvh bg-stone-950 text-stone-100">
+      <div className="min-h-dvh bg-transparent text-[#3f3437]">
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
-          <p className="rounded-md border border-red-900/60 bg-red-950/30 p-4 text-sm text-red-100">
+          <p className="rounded-md border border-[#f0c8cf] bg-[#fff5f6] p-4 text-sm text-[#9f5d68]">
             {errorMessage ||
               'Não foi possível carregar as informações do estabelecimento.'}
           </p>
@@ -142,45 +142,45 @@ export function CustomerPage() {
     <AppLayout barbearia={barbearia} currentStep="dados">
       <div className="flex flex-col gap-5">
         <div>
-          <h1 className="text-2xl font-semibold text-stone-50">
+          <h1 className="text-2xl font-semibold text-[#3f3437]">
             Informe seus dados
           </h1>
-          <p className="mt-2 text-sm leading-6 text-stone-300">
+          <p className="mt-2 text-sm leading-6 text-[#7b666d]">
             Usaremos essas informações para confirmar a solicitação.
           </p>
         </div>
 
         <div className="grid gap-4">
           <label className="grid gap-2">
-            <span className="text-sm font-medium text-stone-200">Nome</span>
+            <span className="text-sm font-medium text-[#6f5a61]">Nome</span>
             <input
               type="text"
-              className="min-h-12 rounded-md border border-stone-700 bg-stone-950/70 px-4 text-sm text-stone-50 outline-none shadow-inner shadow-black/20 transition focus:border-amber-400"
+              className="min-h-12 rounded-md border border-[#f3d4dc] bg-white px-4 text-sm text-[#3f3437] outline-none shadow-inner shadow-[#3f3437]/10 transition focus:border-[#d88ca4]"
               value={nomeCliente}
               onChange={handleNameChange}
               placeholder="Seu nome"
             />
             {!isNameValid && nomeCliente.length > 0 ? (
-              <span className="text-xs text-amber-200">
+              <span className="text-xs text-[#b66f87]">
                 Informe pelo menos 3 caracteres.
               </span>
             ) : null}
           </label>
 
           <label className="grid gap-2">
-            <span className="text-sm font-medium text-stone-200">
+            <span className="text-sm font-medium text-[#6f5a61]">
               Telefone
             </span>
             <input
               type="tel"
               inputMode="numeric"
-              className="min-h-12 rounded-md border border-stone-700 bg-stone-950/70 px-4 text-sm text-stone-50 outline-none shadow-inner shadow-black/20 transition focus:border-amber-400"
+              className="min-h-12 rounded-md border border-[#f3d4dc] bg-white px-4 text-sm text-[#3f3437] outline-none shadow-inner shadow-[#3f3437]/10 transition focus:border-[#d88ca4]"
               value={telefoneCliente}
               onChange={handlePhoneChange}
               placeholder="(11) 99999-9999"
             />
             {!isPhoneValid && telefoneCliente.length > 0 ? (
-              <span className="text-xs text-amber-200">
+              <span className="text-xs text-[#b66f87]">
                 Use o formato (11) 99999-9999.
               </span>
             ) : null}
@@ -190,14 +190,14 @@ export function CustomerPage() {
         <div className="flex justify-between gap-3">
           <button
             type="button"
-            className="min-h-12 rounded-md border border-stone-700 bg-stone-950/60 px-5 text-sm font-semibold text-stone-200 transition hover:border-amber-700"
+            className="min-h-12 rounded-md border border-[#f3d4dc] bg-white px-5 text-sm font-semibold text-[#7b666d] transition hover:border-[#d8a5b5]"
             onClick={() => navigate('/horarios')}
           >
             Voltar
           </button>
           <button
             type="button"
-            className="min-h-12 rounded-md bg-amber-400 px-5 text-sm font-bold text-stone-950 shadow-lg shadow-amber-950/20 transition enabled:hover:bg-amber-300 disabled:cursor-not-allowed disabled:bg-stone-700 disabled:text-stone-400 disabled:shadow-none"
+            className="min-h-12 rounded-md bg-[#d88ca4] px-5 text-sm font-bold text-white shadow-lg shadow-[#3f3437]/15 transition enabled:hover:bg-[#c97891] disabled:cursor-not-allowed disabled:bg-[#f8e7ed] disabled:text-[#cdb5bd] disabled:shadow-none"
             disabled={!isFormValid}
             onClick={() => navigate('/revisao')}
           >

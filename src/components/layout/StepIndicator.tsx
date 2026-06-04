@@ -19,7 +19,7 @@ interface StepIndicatorProps {
 
 const bookingSteps: StepItem[] = [
   { id: 'servico', label: 'Serviço' },
-  { id: 'barbeiro', label: 'Barbeiro' },
+  { id: 'barbeiro', label: 'Profissional' },
   { id: 'data', label: 'Data' },
   { id: 'horario', label: 'Horário' },
   { id: 'dados', label: 'Dados' },
@@ -53,7 +53,7 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
   return (
     <nav
       aria-label="Progresso do agendamento"
-      className="rounded-2xl border border-stone-800/80 bg-stone-950/70 px-4 py-4 shadow-lg shadow-black/20"
+      className="rounded-2xl border border-[#f3d4dc] bg-white/85 px-4 py-4 shadow-lg shadow-[#3f3437]/10"
     >
       <div
         ref={scrollContainerRef}
@@ -78,13 +78,13 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
                     className={[
                       'grid size-8 place-items-center rounded-full border text-xs font-bold transition-colors',
                       isCurrent
-                        ? 'border-amber-400 bg-amber-400 text-stone-950 shadow-lg shadow-amber-950/40'
+                        ? 'border-[#d88ca4] bg-[#d88ca4] text-white shadow-lg shadow-[#3f3437]/15'
                         : '',
                       isCompleted
-                        ? 'border-amber-800 bg-amber-950/80 text-amber-300'
+                        ? 'border-[#f3d4dc] bg-[#f8e7ed] text-[#7b666d]'
                         : '',
                       isUpcoming
-                        ? 'border-stone-700 bg-stone-900/80 text-stone-500'
+                        ? 'border-[#f8e7ed] bg-[#fff7f8] text-[#cdb5bd]'
                         : '',
                     ].join(' ')}
                     aria-current={isCurrent ? 'step' : undefined}
@@ -95,9 +95,9 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
                   <span
                     className={[
                       'whitespace-nowrap text-xs font-semibold transition-colors',
-                      isCurrent ? 'text-amber-300' : '',
-                      isCompleted ? 'text-stone-300' : '',
-                      isUpcoming ? 'text-stone-500' : '',
+                      isCurrent ? 'text-[#b66f87]' : '',
+                      isCompleted ? 'text-[#7b666d]' : '',
+                      isUpcoming ? 'text-[#cdb5bd]' : '',
                     ].join(' ')}
                   >
                     {step.label}
@@ -108,7 +108,7 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
                   <span
                     className={[
                       'mx-3 mb-6 h-px w-8 rounded-full sm:w-12',
-                      index < currentIndex ? 'bg-amber-700' : 'bg-stone-800',
+                      index < currentIndex ? 'bg-[#d8a5b5]' : 'bg-[#f8e7ed]',
                     ].join(' ')}
                     aria-hidden="true"
                   />

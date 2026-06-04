@@ -22,8 +22,8 @@ export function ServiceCard({
       className={[
         'w-full rounded-md border p-4 text-left shadow-sm transition',
         isSelected
-          ? 'border-amber-400 bg-amber-400 text-stone-950 shadow-amber-950/20'
-          : 'border-stone-800 bg-stone-900/90 text-stone-100 shadow-black/20 hover:border-amber-700 hover:bg-stone-900',
+          ? 'border-[#d88ca4] bg-[#d88ca4] text-white shadow-[#3f3437]/15'
+          : 'border-[#f3d4dc] bg-white text-[#3f3437] shadow-[#3f3437]/10 hover:border-[#d8a5b5] hover:bg-[#fff7f8]',
       ].join(' ')}
       onClick={() => onSelect(servico)}
       aria-pressed={isSelected}
@@ -32,7 +32,7 @@ export function ServiceCard({
       <span
         className={[
           'mt-2 block text-sm leading-6',
-          isSelected ? 'text-stone-900' : 'text-stone-300',
+          isSelected ? 'text-[#fff7f8]' : 'text-[#7b666d]',
         ].join(' ')}
       >
         {servico.descricao}

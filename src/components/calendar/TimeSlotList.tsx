@@ -13,7 +13,7 @@ export function TimeSlotList({
 }: TimeSlotListProps) {
   if (horarios.length === 0) {
     return (
-      <p className="rounded-md border border-stone-800 bg-stone-900 p-4 text-sm text-stone-300">
+      <p className="rounded-md border border-[#f3d4dc] bg-[#fff7f8] p-4 text-sm text-[#7b666d]">
         Nenhum horário disponível para esta data.
       </p>
     )
@@ -31,8 +31,8 @@ export function TimeSlotList({
             className={[
               'min-h-12 rounded-md border px-4 text-sm font-semibold shadow-sm transition',
               isSelected
-                ? 'border-amber-400 bg-amber-400 text-stone-950 shadow-amber-950/20'
-                : 'border-stone-700 bg-stone-900/90 text-stone-100 shadow-black/20 hover:border-amber-300 hover:bg-stone-900',
+                ? 'border-[#d88ca4] bg-[#d88ca4] text-white shadow-[#3f3437]/15'
+                : 'border-[#f3d4dc] bg-white text-[#3f3437] shadow-[#3f3437]/10 hover:border-[#d8a5b5] hover:bg-[#fff7f8]',
             ].join(' ')}
             aria-pressed={isSelected}
             onClick={() => onSelectTime(slot.horario)}

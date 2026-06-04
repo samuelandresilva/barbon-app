@@ -78,19 +78,19 @@ export function ReviewPage() {
     !telefoneCliente
   ) {
     return (
-      <div className="min-h-dvh bg-stone-950 text-stone-100">
+      <div className="min-h-dvh bg-transparent text-[#3f3437]">
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
-          <div className="rounded-md border border-stone-800 bg-stone-900 p-4">
-            <p className="text-sm text-stone-300">
+          <div className="rounded-md border border-[#f3d4dc] bg-white p-4">
+            <p className="text-sm text-[#7b666d]">
               Complete as etapas anteriores antes de revisar a solicitação.
             </p>
             <button
               type="button"
-              className="mt-4 min-h-11 rounded bg-amber-400 px-4 text-sm font-semibold text-stone-950"
+              className="mt-4 min-h-11 rounded bg-[#d88ca4] px-4 text-sm font-semibold text-white"
               onClick={() => navigate('/servicos')}
             >
-              Voltar ao inicio do fluxo
+              Voltar ao início do fluxo
             </button>
           </div>
         </main>
@@ -100,10 +100,10 @@ export function ReviewPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-dvh bg-stone-950 text-stone-100">
+      <div className="min-h-dvh bg-transparent text-[#3f3437]">
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
-          <p className="rounded-md border border-stone-800 bg-stone-900 p-4 text-sm text-stone-300">
+          <p className="rounded-md border border-[#f3d4dc] bg-white p-4 text-sm text-[#7b666d]">
             Carregando informações...
           </p>
         </main>
@@ -113,10 +113,10 @@ export function ReviewPage() {
 
   if (errorMessage || !barbearia) {
     return (
-      <div className="min-h-dvh bg-stone-950 text-stone-100">
+      <div className="min-h-dvh bg-transparent text-[#3f3437]">
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
-          <p className="rounded-md border border-red-900/60 bg-red-950/30 p-4 text-sm text-red-100">
+          <p className="rounded-md border border-[#f0c8cf] bg-[#fff5f6] p-4 text-sm text-[#9f5d68]">
             {errorMessage ||
               'Não foi possível carregar as informações do estabelecimento.'}
           </p>
@@ -150,69 +150,69 @@ export function ReviewPage() {
     <AppLayout barbearia={barbearia} currentStep="revisao">
       <div className="flex flex-col gap-5">
         <div>
-          <h1 className="text-2xl font-semibold text-stone-50">
+          <h1 className="text-2xl font-semibold text-[#3f3437]">
             Revise sua solicitação
           </h1>
-          <p className="mt-2 text-sm leading-6 text-stone-300">
+          <p className="mt-2 text-sm leading-6 text-[#7b666d]">
             Confira os dados antes de enviar.
           </p>
         </div>
 
         <dl className="grid gap-3">
-          <div className="rounded-md border border-stone-800 bg-stone-900/90 p-4 shadow-sm shadow-black/20">
-            <dt className="text-xs font-semibold uppercase text-stone-500">
+          <div className="rounded-md border border-[#f3d4dc] bg-white p-4 shadow-sm shadow-[#3f3437]/10">
+            <dt className="text-xs font-semibold uppercase text-[#b98a99]">
               Serviço
             </dt>
-            <dd className="mt-2 text-base font-semibold text-stone-50">
+            <dd className="mt-2 text-base font-semibold text-[#3f3437]">
               {servicoSelecionado.nome}
             </dd>
-            <dd className="mt-1 text-sm text-stone-300">
+            <dd className="mt-1 text-sm text-[#7b666d]">
               {currencyFormatter.format(servicoSelecionado.preco)} -{' '}
               {servicoSelecionado.duracaoMinutos} min
             </dd>
           </div>
 
-          <div className="rounded-md border border-stone-800 bg-stone-900/90 p-4 shadow-sm shadow-black/20">
-            <dt className="text-xs font-semibold uppercase text-stone-500">
+          <div className="rounded-md border border-[#f3d4dc] bg-white p-4 shadow-sm shadow-[#3f3437]/10">
+            <dt className="text-xs font-semibold uppercase text-[#b98a99]">
               Profissional
             </dt>
-            <dd className="mt-2 text-base font-semibold text-stone-50">
+            <dd className="mt-2 text-base font-semibold text-[#3f3437]">
               {barbeiroSelecionado.nome}
             </dd>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2">
-            <div className="rounded-md border border-stone-800 bg-stone-900/90 p-4 shadow-sm shadow-black/20">
-              <dt className="text-xs font-semibold uppercase text-stone-500">
+            <div className="rounded-md border border-[#f3d4dc] bg-white p-4 shadow-sm shadow-[#3f3437]/10">
+              <dt className="text-xs font-semibold uppercase text-[#b98a99]">
                 Data
               </dt>
-              <dd className="mt-2 text-base font-semibold text-stone-50">
+              <dd className="mt-2 text-base font-semibold text-[#3f3437]">
                 {formatDate(data)}
               </dd>
             </div>
 
-            <div className="rounded-md border border-stone-800 bg-stone-900/90 p-4 shadow-sm shadow-black/20">
-              <dt className="text-xs font-semibold uppercase text-stone-500">
+            <div className="rounded-md border border-[#f3d4dc] bg-white p-4 shadow-sm shadow-[#3f3437]/10">
+              <dt className="text-xs font-semibold uppercase text-[#b98a99]">
                 Horário
               </dt>
-              <dd className="mt-2 text-base font-semibold text-stone-50">
+              <dd className="mt-2 text-base font-semibold text-[#3f3437]">
                 {horario}
               </dd>
             </div>
           </div>
 
-          <div className="rounded-md border border-stone-800 bg-stone-900/90 p-4 shadow-sm shadow-black/20">
-            <dt className="text-xs font-semibold uppercase text-stone-500">
+          <div className="rounded-md border border-[#f3d4dc] bg-white p-4 shadow-sm shadow-[#3f3437]/10">
+            <dt className="text-xs font-semibold uppercase text-[#b98a99]">
               Cliente
             </dt>
-            <dd className="mt-2 text-base font-semibold text-stone-50">
+            <dd className="mt-2 text-base font-semibold text-[#3f3437]">
               {nomeCliente}
             </dd>
-            <dd className="mt-1 text-sm text-stone-300">{telefoneCliente}</dd>
+            <dd className="mt-1 text-sm text-[#7b666d]">{telefoneCliente}</dd>
           </div>
         </dl>
 
-        <p className="rounded-md border border-amber-400/40 bg-amber-400/10 p-4 text-sm leading-6 text-amber-100">
+        <p className="rounded-md border border-[#f3d4dc] bg-[#fff7f8] p-4 text-sm leading-6 text-[#7b666d]">
           Sua solicitação será enviada para o estabelecimento. 
           O agendamento será confirmado manualmente pela equipe.
         </p>
@@ -220,14 +220,14 @@ export function ReviewPage() {
         <div className="flex justify-between gap-3">
           <button
             type="button"
-            className="min-h-12 rounded-md border border-stone-700 bg-stone-950/60 px-5 text-sm font-semibold text-stone-200 transition hover:border-amber-700"
+            className="min-h-12 rounded-md border border-[#f3d4dc] bg-white px-5 text-sm font-semibold text-[#7b666d] transition hover:border-[#d8a5b5]"
             onClick={() => navigate('/cliente')}
           >
             Voltar
           </button>
           <button
             type="button"
-            className="min-h-12 rounded-md bg-amber-400 px-5 text-sm font-bold text-stone-950 shadow-lg shadow-amber-950/20 transition hover:bg-amber-300"
+            className="min-h-12 rounded-md bg-[#d88ca4] px-5 text-sm font-bold text-white shadow-lg shadow-[#3f3437]/15 transition hover:bg-[#c97891]"
             onClick={handleBookingRequest}
           >
             Solicitar Agendamento
