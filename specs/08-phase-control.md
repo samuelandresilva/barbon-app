@@ -418,7 +418,41 @@
 - Nao foram implementados horarios disponiveis, Google Calendar mock ou calculo de disponibilidade.
 - O build e o lint foram executados com sucesso.
 
-- [ ] Fase 10 - Google Calendar Mock
+- [x] Fase 10 - Google Calendar Mock
+
+## Log - Fase 10 - Google Calendar Mock
+
+### Data da conclusao
+
+2026-06-03
+
+### Arquivos criados
+
+- src/services/googleCalendarService.ts
+
+### Arquivos alterados
+
+- specs/08-phase-control.md
+
+### Comandos executados
+
+- Get-Content specs/08-phase-control.md
+- Get-Content src\types\EventoOcupado.ts
+- rg --files src\services
+- git status --short
+- npm run build
+- npm run lint
+- Remove-Item -LiteralPath .\dist -Recurse -Force
+
+### Observacoes importantes
+
+- A ultima fase concluida antes desta implementacao era a Fase 09 - Seleção de Data.
+- Foi criado o googleCalendarService.ts em modo mockado.
+- O servico retorna eventos ocupados ficticios por googleCalendarId e data selecionada.
+- O mock e somente leitura e nao cria, edita ou remove eventos.
+- Nao foi implementada a regra generateAvailableSlots() da Fase 11.
+- O build e o lint foram executados com sucesso.
+
 - [ ] Fase 11 - Regra de Disponibilidade
 - [ ] Fase 12 - Seleção de Horário
 - [ ] Fase 13 - Dados do Cliente
