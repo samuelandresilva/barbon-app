@@ -251,7 +251,50 @@
 - Nao houve integracao com telas, paginas, contexto ou fluxo de navegacao; isso permanece para as fases seguintes.
 - O build e o lint foram executados com sucesso.
 
-- [ ] Fase 06 - Home
+- [x] Fase 06 - Home
+
+## Log - Fase 06 - Home
+
+### Data da conclusao
+
+2026-06-03
+
+### Arquivos criados
+
+- src/pages/HomePage/HomePage.tsx
+- src/pages/HomePage/index.ts
+
+### Arquivos alterados
+
+- src/routes/AppRoutes.tsx
+- specs/08-phase-control.md
+
+### Comandos executados
+
+- Get-Content specs/08-phase-control.md
+- Get-Content specs/01-product-requirements.md
+- Get-Content specs/02-ui-spec.md
+- Get-Content specs/03-data-model.md
+- Get-Content specs/04-technical-architecture.md
+- Get-Content specs/05-acceptance-criteria.md
+- Get-Content specs/06-implementation-rules.md
+- Get-Content specs/07-implementation-plan.md
+- rg --files src
+- Get-Content src\routes\AppRoutes.tsx
+- Get-Content src\services\googleSheetsService.ts
+- npm run build
+- npm run lint
+- Remove-Item -LiteralPath .\dist -Recurse -Force
+
+### Observacoes importantes
+
+- A ultima fase concluida antes desta implementacao era a Fase 05 - Integração Google Sheets Mock.
+- A HomePage carrega os dados mockados da barbearia pelo googleSheetsService.
+- Foram adicionados estados de loading e erro amigavel para o carregamento inicial.
+- O botao Agendar Horario navega para /servicos, rota que sera implementada na Fase 07.
+- Nao foram implementados ServicePage, selecao de servico ou regras de fluxo da fase seguinte.
+- O build e o lint foram executados com sucesso.
+
 - [ ] Fase 07 - Seleção de Serviço
 - [ ] Fase 08 - Seleção de Barbeiro
 - [ ] Fase 09 - Seleção de Data
