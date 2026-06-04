@@ -658,6 +658,54 @@
 
 - O teste fei realizado manualmente e aprovado por humanos.
 
-- [ ] Fase 17 - Integração Real Google Sheets
+- [x] Fase 17 - Integração Real Google Sheets
+
+## Log - Fase 17 - Integração Real Google Sheets
+
+### Data da conclusao
+
+2026-06-04
+
+### Arquivos criados
+
+- .env
+- .env.example
+- src/vite-env.d.ts
+
+### Arquivos alterados
+
+- src/services/googleSheetsService.ts
+- specs/08-phase-control.md
+
+### Comandos executados
+
+- Get-Content specs/08-phase-control.md
+- Get-Content specs/07-implementation-plan.md
+- Get-Content specs/01-product-requirements.md
+- Get-Content specs/03-data-model.md
+- git status --short
+- Invoke-WebRequest -Uri "https://docs.google.com/spreadsheets/d/14fzMm1HCaup4EN6EXydftQdADwdE_8Ps2mw-otMiD9c/gviz/tq?tqx=out:csv&sheet=barbearia" -UseBasicParsing
+- Invoke-WebRequest -Uri "https://docs.google.com/spreadsheets/d/14fzMm1HCaup4EN6EXydftQdADwdE_8Ps2mw-otMiD9c/gviz/tq?tqx=out:csv&sheet=servicos" -UseBasicParsing
+- Get-Content src\services\googleSheetsService.ts
+- Get-Content .gitignore
+- rg --files -g "*.env*" -g "vite-env.d.ts"
+- Get-Content src\vite-env.d.ts -ErrorAction SilentlyContinue
+- npm run build
+- npm run lint
+- Invoke-WebRequest para validar as abas barbearia, servicos, barbeiros, barbeiro_servicos e barbeiro_agendas
+- Remove-Item -LiteralPath .\dist -Recurse -Force
+- Select-String -Path specs/08-phase-control.md -Pattern 'Fase 17' -Context 0,2
+
+### Observacoes importantes
+
+- A ultima fase concluida antes desta implementacao era a Fase 16 - Fluxo Completo.
+- A leitura mockada do googleSheetsService.ts foi substituida por leitura real da planilha publica via CSV do Google Sheets.
+- As abas sao acessadas pelo nome: barbearia, servicos, barbeiros, barbeiro_servicos e barbeiro_agendas.
+- O spreadsheetId foi configurado em VITE_GOOGLE_SHEETS_ID.
+- Foi criado .env local com o ID informado, mas ele permanece ignorado pelo Git conforme .gitignore.
+- Foi criado .env.example para versionar o formato da configuracao.
+- Nao foi implementada integracao real com Google Calendar; a Fase 18 permanece pendente.
+- O build, o lint e a validacao HTTP das cinco abas foram executados com sucesso.
+
 - [ ] Fase 18 - Integração Real Google Calendar
 - [ ] Fase 19 - Refinamento Visual
