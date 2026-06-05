@@ -3,6 +3,7 @@ import type {
   DadosEmpresa,
   Profissional,
   Servico,
+  TemaCores,
 } from '../types'
 import type { ProfissionalServico } from '../types/ProfissionalServico'
 
@@ -20,6 +21,7 @@ type GoogleSheetName =
   | 'profissional'
   | 'profissional_servicos'
   | 'profissional_agendas'
+  | 'cores'
 
 type SheetRow = Record<string, string>
 
@@ -141,6 +143,54 @@ function parseNumber(value: string) {
   return Number(value.replace(',', '.'))
 }
 
+const colorKeyAliases: Record<string, keyof TemaCores> = {
+  background: 'fundo',
+  fundo: 'fundo',
+  primaria: 'primaria',
+  primary: 'primaria',
+  secundaria: 'secundaria',
+  secondary: 'secundaria',
+  text: 'texto',
+  texto: 'texto',
+}
+
+function normalizeColorKey(key: string) {
+  return key.trim().replace(/[\s-]+/g, '_').toLowerCase()
+}
+
+function getColorThemeKey(key: string): keyof TemaCores | undefined {
+  return colorKeyAliases[normalizeColorKey(key)]
+}
+
+function setThemeColor(temaCores: TemaCores, key: string, value?: string) {
+  const colorKey = getColorThemeKey(key)
+  const colorValue = value?.trim()
+
+  if (!colorKey || !colorValue) {
+    return
+  }
+
+  temaCores[colorKey] = colorValue
+}
+
+function mapTemaCores(rows: SheetRow[]): TemaCores {
+  return rows.reduce<TemaCores>((temaCores, row) => {
+    const rowKey = row.chave || row.key || row.nome || row.name
+    const rowValue = row.valor || row.value || row.cor || row.color
+
+    if (rowKey) {
+      setThemeColor(temaCores, rowKey, rowValue)
+      return temaCores
+    }
+
+    Object.entries(row).forEach(([key, value]) => {
+      setThemeColor(temaCores, key, value)
+    })
+
+    return temaCores
+  }, {})
+}
+
 function mapDadosEmpresa(row: SheetRow): DadosEmpresa {
   return {
     nome: row.nome,
@@ -246,16 +296,31 @@ export async function getAgendas(): Promise<AgendaProfissional[]> {
   }
 }
 
+export async function getTemaCores(): Promise<TemaCores> {
+  try {
+    const rows = await getSheetRows('cores')
+
+    return mapTemaCores(rows)
+  } catch {
+    return {}
+  }
+}
+
 export async function getGoogleSheetsData(): Promise<GoogleSheetsData> {
   try {
-    const [dadosEmpresa, servicos, profissionais, profissionalServicos, agendas] =
-      await Promise.all([
-        getDadosEmpresa(),
-        getServicos(),
-        getProfissionais(),
-        getProfissionalServicos(),
-        getAgendas(),
-      ])
+    const [
+      dadosEmpresa,
+      servicos,
+      profissionais,
+      profissionalServicos,
+      agendas,
+    ] = await Promise.all([
+      getDadosEmpresa(),
+      getServicos(),
+      getProfissionais(),
+      getProfissionalServicos(),
+      getAgendas(),
+    ])
 
     return {
       dadosEmpresa,

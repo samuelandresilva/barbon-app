@@ -91,16 +91,16 @@ export function CustomerPage() {
 
   if (!servicoSelecionado || !profissionalSelecionado || !data || !horario) {
     return (
-      <div className="min-h-dvh bg-transparent text-[#3f3437]">
+      <div className="min-h-dvh bg-transparent text-[var(--color-text)]">
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
-          <div className="rounded-md border border-[#f3d4dc] bg-white p-4">
-            <p className="text-sm text-[#7b666d]">
+          <div className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
+            <p className="text-sm text-[var(--color-muted)]">
               Complete as etapas anteriores antes de informar seus dados.
             </p>
             <button
               type="button"
-              className="mt-4 min-h-11 rounded bg-[#d88ca4] px-4 text-sm font-semibold text-white"
+              className="mt-4 min-h-11 rounded bg-[var(--color-primary)] px-4 text-sm font-semibold text-[var(--color-on-primary)]"
               onClick={() => navigate('/servicos')}
             >
               Voltar ao início do fluxo
@@ -113,10 +113,10 @@ export function CustomerPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-dvh bg-transparent text-[#3f3437]">
+      <div className="min-h-dvh bg-transparent text-[var(--color-text)]">
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
-          <p className="rounded-md border border-[#f3d4dc] bg-white p-4 text-sm text-[#7b666d]">
+          <p className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-4 text-sm text-[var(--color-muted)]">
             Carregando informações...
           </p>
         </main>
@@ -126,10 +126,10 @@ export function CustomerPage() {
 
   if (errorMessage || !empresa) {
     return (
-      <div className="min-h-dvh bg-transparent text-[#3f3437]">
+      <div className="min-h-dvh bg-transparent text-[var(--color-text)]">
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
-          <p className="rounded-md border border-[#f0c8cf] bg-[#fff5f6] p-4 text-sm text-[#9f5d68]">
+          <p className="rounded-md border border-[var(--color-error-border)] bg-[var(--color-error-background)] p-4 text-sm text-[var(--color-error-text)]">
             {errorMessage ||
               'Não foi possível carregar as informações do estabelecimento.'}
           </p>
@@ -142,45 +142,45 @@ export function CustomerPage() {
     <AppLayout dadosEmpresa={empresa} currentStep="dados">
       <div className="flex flex-col gap-5">
         <div>
-          <h1 className="text-2xl font-semibold text-[#3f3437]">
+          <h1 className="text-2xl font-semibold text-[var(--color-text)]">
             Informe seus dados
           </h1>
-          <p className="mt-2 text-sm leading-6 text-[#7b666d]">
+          <p className="mt-2 text-sm leading-6 text-[var(--color-muted)]">
             Usaremos essas informações para confirmar a solicitação.
           </p>
         </div>
 
         <div className="grid gap-4">
           <label className="grid gap-2">
-            <span className="text-sm font-medium text-[#6f5a61]">Nome</span>
+            <span className="text-sm font-medium text-[var(--color-muted)]">Nome</span>
             <input
               type="text"
-              className="min-h-12 rounded-md border border-[#f3d4dc] bg-white px-4 text-sm text-[#3f3437] outline-none shadow-inner shadow-[#3f3437]/10 transition focus:border-[#d88ca4]"
+              className="min-h-12 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-4 text-sm text-[var(--color-text)] outline-none shadow-inner shadow-[color:var(--color-shadow)] transition focus:border-[var(--color-primary)]"
               value={nomeCliente}
               onChange={handleNameChange}
               placeholder="Seu nome"
             />
             {!isNameValid && nomeCliente.length > 0 ? (
-              <span className="text-xs text-[#b66f87]">
+              <span className="text-xs text-[var(--color-accent)]">
                 Informe pelo menos 3 caracteres.
               </span>
             ) : null}
           </label>
 
           <label className="grid gap-2">
-            <span className="text-sm font-medium text-[#6f5a61]">
+            <span className="text-sm font-medium text-[var(--color-muted)]">
               Telefone
             </span>
             <input
               type="tel"
               inputMode="numeric"
-              className="min-h-12 rounded-md border border-[#f3d4dc] bg-white px-4 text-sm text-[#3f3437] outline-none shadow-inner shadow-[#3f3437]/10 transition focus:border-[#d88ca4]"
+              className="min-h-12 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-4 text-sm text-[var(--color-text)] outline-none shadow-inner shadow-[color:var(--color-shadow)] transition focus:border-[var(--color-primary)]"
               value={telefoneCliente}
               onChange={handlePhoneChange}
               placeholder="(11) 99999-9999"
             />
             {!isPhoneValid && telefoneCliente.length > 0 ? (
-              <span className="text-xs text-[#b66f87]">
+              <span className="text-xs text-[var(--color-accent)]">
                 Use o formato (11) 99999-9999.
               </span>
             ) : null}
@@ -190,14 +190,14 @@ export function CustomerPage() {
         <div className="flex justify-between gap-3">
           <button
             type="button"
-            className="min-h-12 rounded-md border border-[#f3d4dc] bg-white px-5 text-sm font-semibold text-[#7b666d] transition hover:border-[#d8a5b5]"
+            className="min-h-12 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-5 text-sm font-semibold text-[var(--color-muted)] transition hover:border-[var(--color-border-hover)]"
             onClick={() => navigate('/horarios')}
           >
             Voltar
           </button>
           <button
             type="button"
-            className="min-h-12 rounded-md bg-[#d88ca4] px-5 text-sm font-bold text-white shadow-lg shadow-[#3f3437]/15 transition enabled:hover:bg-[#c97891] disabled:cursor-not-allowed disabled:bg-[#f8e7ed] disabled:text-[#cdb5bd] disabled:shadow-none"
+            className="min-h-12 rounded-md bg-[var(--color-primary)] px-5 text-sm font-bold text-[var(--color-on-primary)] shadow-lg shadow-[color:var(--color-shadow)] transition enabled:hover:bg-[var(--color-primary-hover)] disabled:cursor-not-allowed disabled:bg-[var(--color-secondary)] disabled:text-[var(--color-subtle)] disabled:shadow-none"
             disabled={!isFormValid}
             onClick={() => navigate('/revisao')}
           >

@@ -78,16 +78,16 @@ export function ReviewPage() {
     !telefoneCliente
   ) {
     return (
-      <div className="min-h-dvh bg-transparent text-[#3f3437]">
+      <div className="min-h-dvh bg-transparent text-[var(--color-text)]">
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
-          <div className="rounded-md border border-[#f3d4dc] bg-white p-4">
-            <p className="text-sm text-[#7b666d]">
+          <div className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
+            <p className="text-sm text-[var(--color-muted)]">
               Complete as etapas anteriores antes de revisar a solicitação.
             </p>
             <button
               type="button"
-              className="mt-4 min-h-11 rounded bg-[#d88ca4] px-4 text-sm font-semibold text-white"
+              className="mt-4 min-h-11 rounded bg-[var(--color-primary)] px-4 text-sm font-semibold text-[var(--color-on-primary)]"
               onClick={() => navigate('/servicos')}
             >
               Voltar ao início do fluxo
@@ -100,10 +100,10 @@ export function ReviewPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-dvh bg-transparent text-[#3f3437]">
+      <div className="min-h-dvh bg-transparent text-[var(--color-text)]">
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
-          <p className="rounded-md border border-[#f3d4dc] bg-white p-4 text-sm text-[#7b666d]">
+          <p className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-4 text-sm text-[var(--color-muted)]">
             Carregando informações...
           </p>
         </main>
@@ -113,10 +113,10 @@ export function ReviewPage() {
 
   if (errorMessage || !empresa) {
     return (
-      <div className="min-h-dvh bg-transparent text-[#3f3437]">
+      <div className="min-h-dvh bg-transparent text-[var(--color-text)]">
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
-          <p className="rounded-md border border-[#f0c8cf] bg-[#fff5f6] p-4 text-sm text-[#9f5d68]">
+          <p className="rounded-md border border-[var(--color-error-border)] bg-[var(--color-error-background)] p-4 text-sm text-[var(--color-error-text)]">
             {errorMessage ||
               'Não foi possível carregar as informações do estabelecimento.'}
           </p>
@@ -150,69 +150,69 @@ export function ReviewPage() {
     <AppLayout dadosEmpresa={empresa} currentStep="revisao">
       <div className="flex flex-col gap-5">
         <div>
-          <h1 className="text-2xl font-semibold text-[#3f3437]">
+          <h1 className="text-2xl font-semibold text-[var(--color-text)]">
             Revise sua solicitação
           </h1>
-          <p className="mt-2 text-sm leading-6 text-[#7b666d]">
+          <p className="mt-2 text-sm leading-6 text-[var(--color-muted)]">
             Confira os dados antes de enviar.
           </p>
         </div>
 
         <dl className="grid gap-3">
-          <div className="rounded-md border border-[#f3d4dc] bg-white p-4 shadow-sm shadow-[#3f3437]/10">
-            <dt className="text-xs font-semibold uppercase text-[#b98a99]">
+          <div className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-4 shadow-sm shadow-[color:var(--color-shadow)]">
+            <dt className="text-xs font-semibold uppercase text-[var(--color-label)]">
               Serviço
             </dt>
-            <dd className="mt-2 text-base font-semibold text-[#3f3437]">
+            <dd className="mt-2 text-base font-semibold text-[var(--color-text)]">
               {servicoSelecionado.nome}
             </dd>
-            <dd className="mt-1 text-sm text-[#7b666d]">
+            <dd className="mt-1 text-sm text-[var(--color-muted)]">
               {currencyFormatter.format(servicoSelecionado.preco)} -{' '}
               {servicoSelecionado.duracaoMinutos} min
             </dd>
           </div>
 
-          <div className="rounded-md border border-[#f3d4dc] bg-white p-4 shadow-sm shadow-[#3f3437]/10">
-            <dt className="text-xs font-semibold uppercase text-[#b98a99]">
+          <div className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-4 shadow-sm shadow-[color:var(--color-shadow)]">
+            <dt className="text-xs font-semibold uppercase text-[var(--color-label)]">
               Profissional
             </dt>
-            <dd className="mt-2 text-base font-semibold text-[#3f3437]">
+            <dd className="mt-2 text-base font-semibold text-[var(--color-text)]">
               {profissionalSelecionado?.nome}
             </dd>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2">
-            <div className="rounded-md border border-[#f3d4dc] bg-white p-4 shadow-sm shadow-[#3f3437]/10">
-              <dt className="text-xs font-semibold uppercase text-[#b98a99]">
+            <div className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-4 shadow-sm shadow-[color:var(--color-shadow)]">
+              <dt className="text-xs font-semibold uppercase text-[var(--color-label)]">
                 Data
               </dt>
-              <dd className="mt-2 text-base font-semibold text-[#3f3437]">
+              <dd className="mt-2 text-base font-semibold text-[var(--color-text)]">
                 {formatDate(data)}
               </dd>
             </div>
 
-            <div className="rounded-md border border-[#f3d4dc] bg-white p-4 shadow-sm shadow-[#3f3437]/10">
-              <dt className="text-xs font-semibold uppercase text-[#b98a99]">
+            <div className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-4 shadow-sm shadow-[color:var(--color-shadow)]">
+              <dt className="text-xs font-semibold uppercase text-[var(--color-label)]">
                 Horário
               </dt>
-              <dd className="mt-2 text-base font-semibold text-[#3f3437]">
+              <dd className="mt-2 text-base font-semibold text-[var(--color-text)]">
                 {horario}
               </dd>
             </div>
           </div>
 
-          <div className="rounded-md border border-[#f3d4dc] bg-white p-4 shadow-sm shadow-[#3f3437]/10">
-            <dt className="text-xs font-semibold uppercase text-[#b98a99]">
+          <div className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-4 shadow-sm shadow-[color:var(--color-shadow)]">
+            <dt className="text-xs font-semibold uppercase text-[var(--color-label)]">
               Cliente
             </dt>
-            <dd className="mt-2 text-base font-semibold text-[#3f3437]">
+            <dd className="mt-2 text-base font-semibold text-[var(--color-text)]">
               {nomeCliente}
             </dd>
-            <dd className="mt-1 text-sm text-[#7b666d]">{telefoneCliente}</dd>
+            <dd className="mt-1 text-sm text-[var(--color-muted)]">{telefoneCliente}</dd>
           </div>
         </dl>
 
-        <p className="rounded-md border border-[#f3d4dc] bg-[#fff7f8] p-4 text-sm leading-6 text-[#7b666d]">
+        <p className="rounded-md border border-[var(--color-border)] bg-[var(--color-background)] p-4 text-sm leading-6 text-[var(--color-muted)]">
           Sua solicitação será enviada para o estabelecimento. 
           O agendamento será confirmado manualmente pela equipe.
         </p>
@@ -220,14 +220,14 @@ export function ReviewPage() {
         <div className="flex justify-between gap-3">
           <button
             type="button"
-            className="min-h-12 rounded-md border border-[#f3d4dc] bg-white px-5 text-sm font-semibold text-[#7b666d] transition hover:border-[#d8a5b5]"
+            className="min-h-12 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-5 text-sm font-semibold text-[var(--color-muted)] transition hover:border-[var(--color-border-hover)]"
             onClick={() => navigate('/cliente')}
           >
             Voltar
           </button>
           <button
             type="button"
-            className="min-h-12 rounded-md bg-[#d88ca4] px-5 text-sm font-bold text-white shadow-lg shadow-[#3f3437]/15 transition hover:bg-[#c97891]"
+            className="min-h-12 rounded-md bg-[var(--color-primary)] px-5 text-sm font-bold text-[var(--color-on-primary)] shadow-lg shadow-[color:var(--color-shadow)] transition hover:bg-[var(--color-primary-hover)]"
             onClick={handleBookingRequest}
           >
             Solicitar Agendamento

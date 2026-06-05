@@ -85,22 +85,22 @@ export function DateCalendar({
   }
 
   return (
-    <div className="rounded-md border border-[#f3d4dc] bg-white p-3 shadow-sm shadow-[#3f3437]/10">
+    <div className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-3 shadow-sm shadow-[color:var(--color-shadow)]">
       <div className="mb-3 flex items-center justify-between gap-3">
         <button
           type="button"
-          className="min-h-10 rounded-md border border-[#f3d4dc] bg-white px-3 text-sm font-semibold text-[#7b666d] transition hover:border-[#d8a5b5] disabled:cursor-not-allowed disabled:opacity-30"
+          className="min-h-10 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-3 text-sm font-semibold text-[var(--color-muted)] transition hover:border-[var(--color-border-hover)] disabled:cursor-not-allowed disabled:opacity-30"
           disabled={isPreviousMonthDisabled}
           onClick={handlePreviousMonth}
         >
           Anterior
         </button>
-        <p className="text-base font-semibold capitalize text-[#3f3437]">
+        <p className="text-base font-semibold capitalize text-[var(--color-text)]">
           {monthLabel}
         </p>
         <button
           type="button"
-          className="min-h-10 rounded-md border border-[#f3d4dc] bg-white px-3 text-sm font-semibold text-[#7b666d] transition hover:border-[#d8a5b5]"
+          className="min-h-10 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-3 text-sm font-semibold text-[var(--color-muted)] transition hover:border-[var(--color-border-hover)]"
           onClick={handleNextMonth}
         >
           Próximo
@@ -109,7 +109,7 @@ export function DateCalendar({
 
       <div className="grid grid-cols-7 gap-1 text-center">
         {weekDays.map((weekDay) => (
-          <span key={weekDay} className="py-2 text-xs font-semibold text-[#b98a99]">
+          <span key={weekDay} className="py-2 text-xs font-semibold text-[var(--color-label)]">
             {weekDay}
           </span>
         ))}
@@ -125,11 +125,11 @@ export function DateCalendar({
               className={[
                 'aspect-square rounded-md border text-sm font-semibold transition',
                 isSelected
-                  ? 'border-[#d88ca4] bg-[#d88ca4] text-white'
-                  : 'border-[#f3d4dc] bg-white text-[#3f3437]',
+                  ? 'border-[var(--color-primary)] bg-[var(--color-primary)] text-[var(--color-on-primary)]'
+                  : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)]',
                 isDisabled
                   ? 'cursor-not-allowed opacity-30'
-                  : 'hover:border-[#d8a5b5] hover:bg-[#fff7f8]',
+                  : 'hover:border-[var(--color-border-hover)] hover:bg-[var(--color-background)]',
               ].join(' ')}
               disabled={isDisabled}
               onClick={() => onSelectDate(calendarDay.isoDate)}

@@ -51,10 +51,10 @@ export function WhatsAppRedirectPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-dvh bg-transparent text-[#3f3437]">
+      <div className="min-h-dvh bg-transparent text-[var(--color-text)]">
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
-          <p className="rounded-md border border-[#f3d4dc] bg-white p-4 text-sm text-[#7b666d]">
+          <p className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-4 text-sm text-[var(--color-muted)]">
             Carregando informações...
           </p>
         </main>
@@ -64,10 +64,10 @@ export function WhatsAppRedirectPage() {
 
   if (errorMessage || !empresa) {
     return (
-      <div className="min-h-dvh bg-transparent text-[#3f3437]">
+      <div className="min-h-dvh bg-transparent text-[var(--color-text)]">
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
-          <p className="rounded-md border border-[#f0c8cf] bg-[#fff5f6] p-4 text-sm text-[#9f5d68]">
+          <p className="rounded-md border border-[var(--color-error-border)] bg-[var(--color-error-background)] p-4 text-sm text-[var(--color-error-text)]">
             {errorMessage ||
               'Não foi possível carregar as informações do estabelecimento.'}
           </p>
@@ -79,14 +79,14 @@ export function WhatsAppRedirectPage() {
   return (
     <AppLayout dadosEmpresa={empresa}>
       <div className="flex min-h-72 flex-col justify-center gap-5">
-        <div className="rounded-md border border-[#f3d4dc] bg-[#fff7f8] p-5">
-          <p className="text-sm font-bold uppercase text-[#c97891]">
+        <div className="rounded-md border border-[var(--color-border)] bg-[var(--color-background)] p-5">
+          <p className="text-sm font-bold uppercase text-[var(--color-primary-hover)]">
             Solicitação enviada
           </p>
-          <h1 className="mt-2 text-2xl font-bold text-[#3f3437]">
+          <h1 className="mt-2 text-2xl font-bold text-[var(--color-text)]">
             Você foi redirecionado para o WhatsApp.
           </h1>
-          <p className="mt-3 text-sm leading-6 text-[#7b666d]">
+          <p className="mt-3 text-sm leading-6 text-[var(--color-muted)]">
             Sua solicitação foi preparada para envio. A confirmação do
             agendamento será feita manualmente pela equipe {empresa?.nome}.
           </p>
@@ -95,7 +95,7 @@ export function WhatsAppRedirectPage() {
         <div>
           <button
             type="button"
-            className="min-h-12 rounded-md bg-[#d88ca4] px-5 text-sm font-bold text-white shadow-lg shadow-[#3f3437]/15 transition hover:bg-[#c97891]"
+            className="min-h-12 rounded-md bg-[var(--color-primary)] px-5 text-sm font-bold text-[var(--color-on-primary)] shadow-lg shadow-[color:var(--color-shadow)] transition hover:bg-[var(--color-primary-hover)]"
             onClick={handleBackHome}
           >
             Voltar ao início

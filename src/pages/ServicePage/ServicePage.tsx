@@ -77,10 +77,10 @@ export function ServicePage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-dvh bg-transparent text-[#3f3437]">
+      <div className="min-h-dvh bg-transparent text-[var(--color-text)]">
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
-          <p className="rounded-md border border-[#f3d4dc] bg-white p-4 text-sm text-[#7b666d]">
+          <p className="rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] p-4 text-sm text-[var(--color-muted)]">
             Carregando informações...
           </p>
         </main>
@@ -90,10 +90,10 @@ export function ServicePage() {
 
   if (errorMessage || !empresa) {
     return (
-      <div className="min-h-dvh bg-transparent text-[#3f3437]">
+      <div className="min-h-dvh bg-transparent text-[var(--color-text)]">
         <HeaderOakbeard />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
-          <p className="rounded-md border border-[#f0c8cf] bg-[#fff5f6] p-4 text-sm text-[#9f5d68]">
+          <p className="rounded-md border border-[var(--color-error-border)] bg-[var(--color-error-background)] p-4 text-sm text-[var(--color-error-text)]">
             {errorMessage || 'Não foi possível carregar os serviços disponíveis.'}
           </p>
         </main>
@@ -105,21 +105,21 @@ export function ServicePage() {
     <AppLayout dadosEmpresa={empresa} currentStep="servico">
       <div className="flex flex-col gap-5">
         <div>
-          <h1 className="text-2xl font-semibold text-[#3f3437]">
+          <h1 className="text-2xl font-semibold text-[var(--color-text)]">
             Escolha o serviço
           </h1>
-          <p className="mt-2 text-sm leading-6 text-[#7b666d]">
+          <p className="mt-2 text-sm leading-6 text-[var(--color-muted)]">
             Selecione uma opção para continuar.
           </p>
         </div>
 
         <label className="grid gap-2">
-          <span className="text-sm font-medium text-[#6f5a61]">
+          <span className="text-sm font-medium text-[var(--color-muted)]">
             Filtrar serviços
           </span>
           <input
             type="search"
-            className="min-h-12 rounded-md border border-[#f3d4dc] bg-white px-4 text-sm text-[#3f3437] outline-none shadow-inner shadow-[#3f3437]/10 transition focus:border-[#d88ca4]"
+            className="min-h-12 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-4 text-sm text-[var(--color-text)] outline-none shadow-inner shadow-[color:var(--color-shadow)] transition focus:border-[var(--color-primary)]"
             value={serviceFilter}
             onChange={(event) => setServiceFilter(event.target.value)}
             placeholder="Digite o nome do serviço"
@@ -138,7 +138,7 @@ export function ServicePage() {
         </div>
 
         {filteredServices.length === 0 ? (
-          <p className="rounded-md border border-[#f3d4dc] bg-[#fff7f8] p-4 text-sm text-[#7b666d]">
+          <p className="rounded-md border border-[var(--color-border)] bg-[var(--color-background)] p-4 text-sm text-[var(--color-muted)]">
             Nenhum serviço encontrado para o filtro informado.
           </p>
         ) : null}
@@ -146,7 +146,7 @@ export function ServicePage() {
         <div className="flex justify-end">
           <button
             type="button"
-            className="min-h-12 rounded-md bg-[#d88ca4] px-5 text-sm font-bold text-white shadow-lg shadow-[#3f3437]/15 transition enabled:hover:bg-[#c97891] disabled:cursor-not-allowed disabled:bg-[#f8e7ed] disabled:text-[#cdb5bd] disabled:shadow-none"
+            className="min-h-12 rounded-md bg-[var(--color-primary)] px-5 text-sm font-bold text-[var(--color-on-primary)] shadow-lg shadow-[color:var(--color-shadow)] transition enabled:hover:bg-[var(--color-primary-hover)] disabled:cursor-not-allowed disabled:bg-[var(--color-secondary)] disabled:text-[var(--color-subtle)] disabled:shadow-none"
             disabled={!servicoSelecionado}
             onClick={() => navigate('/profissionais')}
           >

@@ -53,7 +53,7 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
   return (
     <nav
       aria-label="Progresso do agendamento"
-      className="rounded-2xl border border-[#f3d4dc] bg-white/85 px-4 py-4 shadow-lg shadow-[#3f3437]/10"
+      className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-4 shadow-lg shadow-[color:var(--color-shadow)]"
     >
       <div
         ref={scrollContainerRef}
@@ -78,13 +78,13 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
                     className={[
                       'grid size-8 place-items-center rounded-full border text-xs font-bold transition-colors',
                       isCurrent
-                        ? 'border-[#d88ca4] bg-[#d88ca4] text-white shadow-lg shadow-[#3f3437]/15'
+                        ? 'border-[var(--color-primary)] bg-[var(--color-primary)] text-[var(--color-on-primary)] shadow-lg shadow-[color:var(--color-shadow)]'
                         : '',
                       isCompleted
-                        ? 'border-[#f3d4dc] bg-[#f8e7ed] text-[#7b666d]'
+                        ? 'border-[var(--color-border)] bg-[var(--color-secondary)] text-[var(--color-muted)]'
                         : '',
                       isUpcoming
-                        ? 'border-[#f8e7ed] bg-[#fff7f8] text-[#cdb5bd]'
+                        ? 'border-[var(--color-secondary)] bg-[var(--color-background)] text-[var(--color-subtle)]'
                         : '',
                     ].join(' ')}
                     aria-current={isCurrent ? 'step' : undefined}
@@ -95,9 +95,9 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
                   <span
                     className={[
                       'whitespace-nowrap text-xs font-semibold transition-colors',
-                      isCurrent ? 'text-[#b66f87]' : '',
-                      isCompleted ? 'text-[#7b666d]' : '',
-                      isUpcoming ? 'text-[#cdb5bd]' : '',
+                      isCurrent ? 'text-[var(--color-accent)]' : '',
+                      isCompleted ? 'text-[var(--color-muted)]' : '',
+                      isUpcoming ? 'text-[var(--color-subtle)]' : '',
                     ].join(' ')}
                   >
                     {step.label}
@@ -108,7 +108,9 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
                   <span
                     className={[
                       'mx-3 mb-6 h-px w-8 rounded-full sm:w-12',
-                      index < currentIndex ? 'bg-[#d8a5b5]' : 'bg-[#f8e7ed]',
+                      index < currentIndex
+                        ? 'bg-[var(--color-border-hover)]'
+                        : 'bg-[var(--color-secondary)]',
                     ].join(' ')}
                     aria-hidden="true"
                   />

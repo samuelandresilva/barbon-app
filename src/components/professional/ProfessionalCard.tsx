@@ -19,8 +19,8 @@ export function ProfessionalCard({
       className={[
         'flex w-full items-center gap-4 rounded-md border p-4 text-left shadow-sm transition',
         isSelected
-          ? 'border-[#d88ca4] bg-[#d88ca4] text-white shadow-[#3f3437]/15'
-          : 'border-[#f3d4dc] bg-white text-[#3f3437] shadow-[#3f3437]/10 hover:border-[#d8a5b5] hover:bg-[#fff7f8]',
+          ? 'border-[var(--color-primary)] bg-[var(--color-primary)] text-[var(--color-on-primary)] shadow-[color:var(--color-shadow)]'
+          : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] shadow-[color:var(--color-shadow)] hover:border-[var(--color-border-hover)] hover:bg-[var(--color-background)]',
       ].join(' ')}
       onClick={() => onSelect(profissional)}
       aria-pressed={isSelected}
@@ -29,15 +29,15 @@ export function ProfessionalCard({
         <img
           src={profissional.fotoUrl}
           alt={`Foto de ${profissional.nome}`}
-          className="size-16 shrink-0 rounded-md border border-[#f3d4dc] object-cover"
+          className="size-16 shrink-0 rounded-md border border-[var(--color-border)] object-cover"
         />
       ) : (
         <span
           className={[
             'grid size-16 shrink-0 place-items-center rounded-md border text-lg font-bold',
             isSelected
-              ? 'border-[#f8e7ed] bg-white text-[#c97891]'
-              : 'border-[#f3d4dc] bg-[#fff7f8] text-[#c97891]',
+              ? 'border-[var(--color-secondary)] bg-[var(--color-surface)] text-[var(--color-primary-hover)]'
+              : 'border-[var(--color-border)] bg-[var(--color-background)] text-[var(--color-primary-hover)]',
           ].join(' ')}
           aria-hidden="true"
         >
@@ -50,7 +50,7 @@ export function ProfessionalCard({
         <span
           className={[
             'mt-1 block text-sm leading-6',
-            isSelected ? 'text-[#fff7f8]' : 'text-[#7b666d]',
+            isSelected ? 'text-[var(--color-background)]' : 'text-[var(--color-muted)]',
           ].join(' ')}
         >
           {profissional.descricao}
