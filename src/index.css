@@ -11,7 +11,7 @@
   --color-secondary: var(--theme-secondary);
   --color-accent: color-mix(in srgb, var(--theme-primary) 72%, var(--theme-text));
   --color-background: var(--theme-background);
-  --color-background-line: color-mix(in srgb, var(--theme-primary) 8%, transparent);
+  --color-background-line: color-mix(in srgb, var(--theme-primary) 4%, transparent);
   --color-surface: #ffffff;
   --color-text: var(--theme-text);
   --color-muted: color-mix(in srgb, var(--theme-text) 76%, var(--theme-background));
@@ -23,8 +23,8 @@
   --color-error-border: color-mix(in srgb, var(--theme-secondary) 74%, #ff0000);
   --color-error-text: color-mix(in srgb, var(--theme-text) 62%, #ff0000);
   --color-on-primary: #ffffff;
-  --color-shadow: color-mix(in srgb, var(--theme-text) 10%, transparent);
-  --color-hero-glow: color-mix(in srgb, var(--theme-primary) 18%, transparent);
+  --color-shadow: rgba(15, 23, 42, 0.1);
+  --color-hero-glow: color-mix(in srgb, var(--theme-primary) 8%, transparent);
 
   color-scheme: light;
   font-family:
