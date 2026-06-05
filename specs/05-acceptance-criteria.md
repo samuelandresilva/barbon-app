@@ -1,8 +1,8 @@
-# Oakbeard.app - Critérios de Aceitação - V1
+# barbon.app - Critérios de Aceitação - V1
 
 ## Objetivo
 
-Este documento define os critérios de aceitação da versão 1 do Oakbeard.app.
+Este documento define os critérios de aceitação da versão 1 do barbon.app.
 
 Uma funcionalidade somente pode ser considerada concluída quando todos os critérios descritos neste documento forem atendidos.
 
@@ -16,7 +16,7 @@ Cliente acessa o aplicativo.
 
 ## Critérios
 
-* Deve exibir o Header do Oakbeard.app.
+* Deve exibir o Header do barbon.app.
 * Deve exibir as informações da barbearia.
 * Deve carregar os dados do Google Sheets.
 * Não deve exibir erros no console.

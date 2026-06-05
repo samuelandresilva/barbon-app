@@ -1,8 +1,8 @@
-# Oakbeard.app - Especificação de Interface (UI Spec) - V1
+# barbon.app - Especificação de Interface (UI Spec) - V1
 
 ## Objetivo
 
-Este documento define a estrutura visual, navegação, telas e componentes da interface do Oakbeard.app.
+Este documento define a estrutura visual, navegação, telas e componentes da interface do barbon.app.
 
 O objetivo é garantir que a implementação siga exatamente a experiência planejada, evitando decisões implícitas durante o desenvolvimento.
 
@@ -28,23 +28,23 @@ O usuário deve avançar etapa por etapa até concluir a solicitação do agenda
 
 ## Cabeçalho da Aplicação
 
-O cabeçalho representa o produto Oakbeard.app.
+O cabeçalho representa o produto barbon.app.
 
 As informações exibidas no cabeçalho não pertencem à barbearia.
 
 O cabeçalho deve conter:
 
-* logo do Oakbeard.app;
-* nome Oakbeard.app;
+* logo do barbon.app;
+* nome barbon.app;
 * slogan opcional;
 * identidade visual da plataforma.
 
 Exemplo:
 
 ```txt
-[LOGO OAKBEARD]
+[LOGO barbon]
 
-Oakbeard.app
+barbon.app
 Seu horário, sua barba, sem complicação.
 ```
 
@@ -111,12 +111,12 @@ Apresentar a plataforma e a barbearia.
 
 ## Componentes
 
-### Header Oakbeard
+### Header barbon
 
 Exibir:
 
-* logo Oakbeard;
-* nome Oakbeard.app;
+* logo barbon;
+* nome barbon.app;
 * slogan opcional.
 
 ---
@@ -490,7 +490,7 @@ Abrir WhatsApp
 
 # Componentes Compartilhados
 
-## Header Oakbeard
+## Header barbon
 
 Presente em todas as telas.
 

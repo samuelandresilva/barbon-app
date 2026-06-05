@@ -1,8 +1,8 @@
-# Oakbeard.app - Regras de Implementação (Implementation Rules)
+# barbon.app - Regras de Implementação (Implementation Rules)
 
 ## Objetivo
 
-Este documento define as regras obrigatórias que devem ser seguidas durante a implementação do Oakbeard.app.
+Este documento define as regras obrigatórias que devem ser seguidas durante a implementação do barbon.app.
 
 Estas regras possuem prioridade sobre decisões automáticas da IA.
 

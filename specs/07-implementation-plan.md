@@ -1,4 +1,4 @@
-# Oakbeard.app - Plano de Implementação
+# barbon.app - Plano de Implementação
 
 ## Objetivo
 
@@ -154,7 +154,7 @@ Criar a estrutura visual comum.
 
 Criar:
 
-* Header Oakbeard;
+* Header barbon;
 * Card da Barbearia;
 * Container principal;
 * Indicador de etapas.
@@ -516,7 +516,7 @@ Disponibilidade baseada na agenda real.
 
 ## Objetivo
 
-Aplicar identidade visual Oakbeard.
+Aplicar identidade visual barbon.
 
 ---
 

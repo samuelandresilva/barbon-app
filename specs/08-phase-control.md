@@ -1,4 +1,4 @@
-# Oakbeard.app - Controle de Fases
+# barbon.app - Controle de Fases
 
 ## Status
 
@@ -45,10 +45,10 @@
 - Get-Content specs/08-phase-control.md
 - node --version
 - npm --version
-- npm create vite@latest oakbeard-bootstrap -- --template react-ts
-- Copy-Item -Path oakbeard-bootstrap\* -Destination . -Recurse -Force
-- Copy-Item -Path oakbeard-bootstrap\.gitignore -Destination . -Force
-- Remove-Item -LiteralPath .\oakbeard-bootstrap -Recurse -Force
+- npm create vite@latest barbon-bootstrap -- --template react-ts
+- Copy-Item -Path barbon-bootstrap\* -Destination . -Recurse -Force
+- Copy-Item -Path barbon-bootstrap\.gitignore -Destination . -Force
+- Remove-Item -LiteralPath .\barbon-bootstrap -Recurse -Force
 - npm install
 - npm install tailwindcss @tailwindcss/vite react-router-dom
 - New-Item -ItemType Directory -Force -Path src\app, src\pages, src\components, src\services, src\hooks, src\contexts, src\domain, src\types, src\utils, src\routes
@@ -175,7 +175,7 @@
 
 - src/components/layout/AppLayout.tsx
 - src/components/layout/BarbeariaCard.tsx
-- src/components/layout/HeaderOakbeard.tsx
+- src/components/layout/HeaderApp.tsx
 - src/components/layout/StepIndicator.tsx
 - src/components/layout/index.ts
 
@@ -205,7 +205,7 @@
 ### Observacoes importantes
 
 - A ultima fase concluida antes desta implementacao era a Fase 03 - BookingContext.
-- Foram criados os componentes visuais compartilhados HeaderOakbeard, BarbeariaCard, StepIndicator e AppLayout.
+- Foram criados os componentes visuais compartilhados HeaderApp, BarbeariaCard, StepIndicator e AppLayout.
 - O layout base foi aplicado na rota inicial para validar a estrutura comum.
 - Os dados da barbearia usados na rota inicial sao estaticos e temporarios, apenas para renderizacao do layout; a fonte mockada sera implementada somente na Fase 05.
 - Nao foram criadas paginas do fluxo, servicos externos, validacoes ou regras de negocio.
@@ -772,7 +772,7 @@
 ### Arquivos alterados
 
 - src/index.css
-- src/components/layout/HeaderOakbeard.tsx
+- src/components/layout/HeaderApp.tsx
 - src/components/layout/AppLayout.tsx
 - src/components/layout/BarbeariaCard.tsx
 - src/components/layout/StepIndicator.tsx
@@ -797,7 +797,7 @@
 - git status --short
 - rg --files src
 - Get-Content src\index.css
-- Get-Content src\components\layout\HeaderOakbeard.tsx
+- Get-Content src\components\layout\HeaderApp.tsx
 - Get-Content src\components\layout\BarbeariaCard.tsx
 - Get-Content src\components\layout\AppLayout.tsx
 - Get-Content src\components\layout\StepIndicator.tsx

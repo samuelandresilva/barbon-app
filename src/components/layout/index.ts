@@ -1,5 +1,5 @@
 export { AppLayout } from './AppLayout'
 export { BarbeariaCard } from './BarbeariaCard'
-export { HeaderOakbeard } from './HeaderOakbeard'
+export { AppHeader as HeaderApp } from './AppHeader'
 export { StepIndicator } from './StepIndicator'
 export type { BookingStep } from './StepIndicator'

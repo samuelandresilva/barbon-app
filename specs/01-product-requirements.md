@@ -1,8 +1,8 @@
-# Oakbeard.app - Product Requirements Document - V1
+# barbon.app - Product Requirements Document - V1
 
 ## Visão Geral
 
-O Oakbeard.app é uma aplicação web para solicitação de agendamentos em barbearias.
+O barbon.app é uma aplicação web para solicitação de agendamentos em barbearias.
 
 O cliente acessa o app, escolhe um serviço, escolhe um barbeiro, visualiza horários disponíveis com base na agenda Google do barbeiro e solicita o agendamento via WhatsApp.
 
@@ -415,7 +415,7 @@ A aplicação deve separar:
 
 # Diretrizes Visuais
 
-O Oakbeard.app deve ter identidade visual:
+O barbon.app deve ter identidade visual:
 
 * rústica;
 * masculina;

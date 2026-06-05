@@ -1,8 +1,8 @@
-# Oakbeard.app - Modelo de Dados (Data Model) - V1
+# barbon.app - Modelo de Dados (Data Model) - V1
 
 ## Objetivo
 
-Este documento define o modelo conceitual e estrutural dos dados utilizados pelo Oakbeard.app.
+Este documento define o modelo conceitual e estrutural dos dados utilizados pelo barbon.app.
 
 O objetivo é garantir que todas as implementações utilizem as mesmas entidades, relacionamentos e contratos internos.
 
@@ -10,7 +10,7 @@ O objetivo é garantir que todas as implementações utilizem as mesmas entidade
 
 # Visão Geral
 
-O Oakbeard.app utiliza duas fontes de dados externas:
+O barbon.app utiliza duas fontes de dados externas:
 
 ## Google Sheets
 

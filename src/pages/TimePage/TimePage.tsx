@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { TimeSlotList } from '../../components/calendar'
-import { AppLayout, HeaderOakbeard } from '../../components/layout'
+import { AppLayout, HeaderApp } from '../../components/layout'
 import { useBooking } from '../../contexts'
 import { generateAvailableSlots } from '../../domain/rules'
 import { getEventosOcupados } from '../../services/googleCalendarService'
@@ -94,7 +94,7 @@ export function TimePage() {
   if (!servicoSelecionado || !barbeiroSelecionado || !data) {
     return (
       <div className="min-h-dvh bg-stone-950 text-stone-100">
-        <HeaderOakbeard />
+        <HeaderApp />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <div className="rounded-md border border-stone-800 bg-stone-900 p-4">
             <p className="text-sm text-stone-300">
@@ -116,7 +116,7 @@ export function TimePage() {
   if (isLoading) {
     return (
       <div className="min-h-dvh bg-stone-950 text-stone-100">
-        <HeaderOakbeard />
+        <HeaderApp />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <p className="rounded-md border border-stone-800 bg-stone-900 p-4 text-sm text-stone-300">
             Carregando horários disponíveis...
@@ -129,7 +129,7 @@ export function TimePage() {
   if (errorMessage || !barbearia) {
     return (
       <div className="min-h-dvh bg-stone-950 text-stone-100">
-        <HeaderOakbeard />
+        <HeaderApp />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <p className="rounded-md border border-red-900/60 bg-red-950/30 p-4 text-sm text-red-100">
             {errorMessage || 'Não foi possível carregar os horários disponíveis.'}

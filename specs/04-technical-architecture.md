@@ -1,4 +1,4 @@
-# Oakbeard.app - Arquitetura Técnica - V1
+# barbon.app - Arquitetura Técnica - V1
 
 ## Objetivo
 
@@ -289,7 +289,7 @@ Responsável por:
 
 Criar componentes reutilizáveis para:
 
-* Header Oakbeard
+* Header barbon
 * Card da Barbearia
 * Card de Serviço
 * Card de Barbeiro
