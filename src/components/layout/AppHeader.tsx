@@ -6,17 +6,17 @@ export function AppHeader() {
           <img
             src="/logo.png"
             alt="barbon.app"
-            className="size-16 shrink-0 rounded-md object-contain"
+            className="size-13 shrink-0 rounded-md object-contain"
           />
 
           <div className="min-w-0">
             <p className="font-bold text-stone-50">
-              <span className="text-3xl font-light text-stone-100">barbon</span>
-              <span className="text-3xl font-light text-amber-500">.</span>
-              <span className="font-light text-stone-100">app</span>
+              <span className="text-xl font-light text-stone-100">barbon</span>
+              <span className="text-xl font-light text-amber-500">.</span>
+              <span className="text-xs font-light text-stone-100">app</span>
             </p>
 
-            <p className="mt-1 text-sm leading-5 text-stone-400">
+            <p className="mt-1 text-xs leading-5 text-stone-400">
               Agende com estilo.
             </p>
           </div>
