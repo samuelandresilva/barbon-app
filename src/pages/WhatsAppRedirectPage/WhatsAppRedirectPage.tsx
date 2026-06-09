@@ -170,7 +170,7 @@ export function WhatsAppRedirectPage() {
       } catch {
         if (isMounted) {
           setErrorMessage(
-            'Nao foi possivel carregar as informacoes do estabelecimento.',
+            'Não foi possível carregar as informações do estabelecimento.',
           )
         }
       } finally {
@@ -210,7 +210,7 @@ export function WhatsAppRedirectPage() {
         )
 
         if (!agenda) {
-          throw new Error('Agenda do profissional nao encontrada.')
+          throw new Error('Agenda do profissional não encontrada.')
         }
 
         const eventosOcupados = await getEventosOcupados({
@@ -276,7 +276,7 @@ export function WhatsAppRedirectPage() {
         <HeaderApp />
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <p className="rounded-md border border-stone-800 bg-stone-900 p-4 text-sm text-stone-300">
-            Carregando informacoes...
+            Carregando informações...
           </p>
         </main>
       </div>
@@ -290,7 +290,7 @@ export function WhatsAppRedirectPage() {
         <main className="mx-auto w-full max-w-5xl px-5 py-8">
           <p className="rounded-md border border-red-900/60 bg-red-950/30 p-4 text-sm text-red-100">
             {errorMessage ||
-              'Nao foi possivel carregar as informacoes do estabelecimento.'}
+              'Não foi possível carregar as informações do estabelecimento.'}
           </p>
         </main>
       </div>
@@ -306,7 +306,7 @@ export function WhatsAppRedirectPage() {
   const appointmentSummary = [
     servicoSelecionado.nome,
     barbeiroSelecionado.nome,
-    `${formatSelectedDate(data)} as ${horario}`,
+    `${formatSelectedDate(data)} às ${horario}`,
   ].join(' - ')
 
   return (
@@ -317,7 +317,7 @@ export function WhatsAppRedirectPage() {
             Status do agendamento
           </p>
           <h1 className="mt-2 text-2xl font-bold text-stone-50">
-            Acompanhe a confirmacao do seu horario
+            Acompanhe a confirmação do seu horário
           </h1>
           <p className="mt-2 text-sm leading-6 text-stone-300">
             O status atualiza automaticamente quando o evento aparece na agenda
@@ -332,25 +332,25 @@ export function WhatsAppRedirectPage() {
             </p>
           ) : null}
 
-          <ol aria-label="Historico do agendamento">
+          <ol aria-label="Histórico do agendamento">
             <TimelineStep
-              description="Voce foi redirecionado para o WhatsApp com a mensagem pronta."
-              meta={`Enviado as ${requestSentAt}`}
+              description="Você foi redirecionado para o WhatsApp com a mensagem pronta."
+              meta={`Enviado às ${requestSentAt}`}
               status="completed"
-              title="Solicitacao enviada"
+              title="Solicitação enviada"
             />
             <TimelineStep
               description="Estamos verificando se o barbeiro confirmou o agendamento na agenda."
               meta={
                 lastStatusCheckAt
-                  ? `Ultima verificacao: ${lastStatusCheckAt}`
-                  : 'Aguardando primeira verificacao'
+                  ? `Última verificação: ${lastStatusCheckAt}`
+                  : 'Aguardando primeira verificação'
               }
               status={waitingStatus}
-              title="Aguardando confirmacao"
+              title="Aguardando confirmação"
             />
             <TimelineStep
-              description="Seu horario foi confirmado na agenda do profissional."
+              description="Seu horário foi confirmado na agenda do profissional."
               isLast
               status={confirmedStatus}
               title="Agendamento confirmado"
@@ -360,7 +360,7 @@ export function WhatsAppRedirectPage() {
 
         {hasStatusCheckError && hasBookingData ? (
           <p className="rounded-md border border-amber-700/50 bg-amber-950/30 p-4 text-sm leading-6 text-amber-100">
-            A ultima verificacao nao foi concluida. O acompanhamento continua
+            A última verificação não foi concluída. O acompanhamento continua
             tentando consultar a agenda automaticamente.
           </p>
         ) : null}
@@ -378,7 +378,7 @@ export function WhatsAppRedirectPage() {
             className="min-h-12 rounded-md bg-amber-400 px-5 text-sm font-bold text-stone-950 shadow-lg shadow-amber-950/20 transition hover:bg-amber-300"
             onClick={handleBackHome}
           >
-            Voltar ao inicio
+            Voltar ao início
           </button>
         </div>
       </div>
